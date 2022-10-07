@@ -38,6 +38,7 @@
                 <!-- Settings Dropdown -->
 <span style="position: absolute; top: 20px; right: 30px"><i class="fa fa-facebook scl-link"></i> <span><i class="fa fa-twitter scl-link"></i> <span><i class="fa fa-youtube scl-link"></i></span></span></span>
          <ul class="navigation">
+         <!-- <li class="nav-list"><a href="/"><i class="fa fa-home fa-nav"></i></a></li> -->
              <li class="nav-list"><a href="/"><img src="https://i.postimg.cc/L8zxQBhv/live.png" alt="" width='35px' class="nav-bg-cl"></a></li>
              <li class="nav-list"><a href="/view/notes"><i class="fa fa-pencil fa-nav"></i></a></li>
              <li class="nav-list"><a href="/question/answer"><img src="https://i.postimg.cc/vmb3JgVy/message.png" alt="" width='30px' class=".fa-nav-ot"></a></li>
