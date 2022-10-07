@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white shadow">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 space-x-12">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 bg-search">
+        <div class="flex items-center justify-between h-16 space-x-12 ">
             <div class="flex">
 
                 <!-- Logo -->

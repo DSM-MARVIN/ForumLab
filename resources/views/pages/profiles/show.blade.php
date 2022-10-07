@@ -1,7 +1,7 @@
 <x-guest-layout>
     <main class="grid grid-cols-4 gap-8 mt-8 wrapper">
 
-        <aside class="flex flex-col items-center h-full p-4 space-y-4 bg-white shadow">
+        <aside class="flex flex-col items-center h-full p-4 space-y-4 side-bg shadow">
 
             <a href="{{ route('profile', $user) }}" class="flex flex-col items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                 <img class="object-cover w-32 h-32 rounded" src="{{ $user->profile_photo_url }}" alt="{{ $user->name() }}" />
@@ -57,12 +57,12 @@
         <section class="flex flex-col col-span-3 gap-y-4">
             <x-alerts.main />
 
-            <span class="w-full p-2 font-bold text-blue-500 bg-white rounded shadow">
+            <span class="w-full p-2 font-bold text-white bg-gray-400 rounded shadow">
                 Latest Threads
             </span>
 
             @foreach($user->latestThreads() as $thread)
-            <article class="p-5 bg-white shadow">
+            <article class="p-5 side-bg shadow">
                 <div class="relative grid grid-cols-8">
                     {{-- Thread --}}
                     <div class="relative col-span-7 space-y-6">

@@ -19,7 +19,7 @@
         </nav>
 
         <section class="home-sec">
-            <div class="home-con <h1>Welcome to MilkshakeLab</h1>
+            <div class="home-con"> <h1>Welcome to MilkshakeLab</h1>
             <h1>Welcome to MilkshakeLab</h1>
             <p>It's awesome having you on our platform. We are a math learning platform, dedicated in helping our users get better in understanding math topics and creating a network of math fanatics, moreover it doesn't metter if you are a beginner but only determination will make the difference.That being said we hope you will enjoy being a part of our community and a special thanks to your contribution.</p>
             </div>

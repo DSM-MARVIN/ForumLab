@@ -8,7 +8,7 @@
 
             <!-- <small class="text-sm text-gray-400">Threads>{{ $category->name() }}>{{ $thread->title() }}</small> -->
 
-            <article class="p-5 bg-white shadow">
+            <article class="p-5 side-bg shadow">
                 <div class="relative grid grid-cols-8">
 
                     {{-- Avatar --}}

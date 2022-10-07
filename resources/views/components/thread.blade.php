@@ -1,4 +1,4 @@
-<article class="p-5 bg-white shadow" ">
+<article class="p-5 shadow article-bg" ">
 
     <div class="relative grid grid-cols-8 gap-3">
 
@@ -14,7 +14,7 @@
                 <h2 class="text-xl tracking-wide hover:text-blue-400">
                     {{ $thread->title() }}
                 </h2>
-                <p class="text-gray-500">
+                <p class="">
                     {{ $thread->excerpt() }}
                 </p>
             </a>

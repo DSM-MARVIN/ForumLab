@@ -3,7 +3,7 @@
         <section class="flex flex-col col-span-3 gap-y-4">
             <!-- <small class="text-sm text-gray-400">threads>{{ $thread->title() }}> <i class="fa fa-pencil-square"></i></small> -->
 
-            <article class="p-5 bg-white shadow">
+            <article class="p-5 side-bg shadow">
                 <div class="w-full">
 
                     {{-- Create --}}
