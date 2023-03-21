@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;1,400&display=swap");
+main {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 44px;
+}
+
+.content {
+  position: relative;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+}
+.content .articleNavigation {
+  position: fixed;
+  padding-top: 36px;
+  padding-bottom: 64px;
+  max-width: 180px;
+  width: 100%;
+}
+.content .articleNavigation .articleNavigationArrow {
+  position: absolute;
+  left: -30px;
+  top: 36px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5px 0 5.5px 9px;
+  border-color: transparent transparent transparent #000;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.content .articleNavigation ul {
+  margin: 0;
+  width: 100%;
+}
+.content .articleNavigation ul li {
+  display: block;
+  font-size: 14px;
+  line-height: 16px;
+  width: 100%;
+  list-style: none;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.content .articleNavigation ul li.active {
+  margin-left: 10px;
+}
+.content .articleNavigation ul li.active a {
+  color: #000;
+}
+.content .articleNavigation ul li:before {
+  display: none;
+}
+.content .articleNavigation ul li + li {
+  margin-top: 24px;
+}
+.content .articleNavigation ul li a {
+  display: block;
+  color: #bbbbbb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.articleContent {
+  max-width: calc(100% - 200px - 60px);
+  width: 924px;
+  margin: auto;
+  padding: 32px 0 48px 260px;
+}
+.articleContent p {
+  padding: 0 0 16px;
+  margin: 0;
+}
+.articleContent h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.articleContent ul,
+.articleContent ol {
+  white-space: normal;
+}
+.articleContent ol li,
+.articleContent ul li,
+.articleContent p,
+.articleContent blockquote {
+  font-size: 18px;
+  line-height: 26px;
+}
+.articleContent img {
+  display: block;
+  margin: 24px 0 40px;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+.articleContent a {
+  font-weight: 600;
+  color: #000;
+  text-decoration: underline;
+}

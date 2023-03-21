@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+/* Flexbox Grid */
+.eRow {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+[class*="eCol"],
+[class*="eCol"].empty {
+	background-color: #343436;
+	border: 1px solid #666;
+	display: flex;
+	flex-direction: column;
+	margin: 0.25rem 0;
+	padding: 1em;
+}
+[class*="eCol"] {
+	flex-basis: auto;
+}
+/* align horizontal | vertical | horizontal+vertical */
+[class*="eCol"].align-hor {
+	align-items: center;
+	display: flex;
+}
+[class*="eCol"].align-ver {
+	display: flex;
+	justify-content: center;
+}
+[class*="eCol"].align-hor-ver {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+/* align right | right+vertical */
+[class*="eCol"].align-ri {
+	align-items: flex-end;
+	display: flex;
+}
+[class*="eCol"].align-ri-ver {
+	align-items: flex-end;
+	display: flex;
+	justify-content: center;
+}
+/* empty column (Placeholder column) */
+[class*="eCol"].empty {
+	background-color: transparent;
+	border-color: transparent;
+}
+[class*="eCol"].empty:before {
+	content: "\00A0"; /* NON-BREAKING SPACE */
+	position: relative;
+}
+
+@media screen and (min-width: 800px) {
+	.eRow {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	[class*="eCol"] {
+		flex: 1;
+	}
+	[class*="eCol-25"] {
+		flex: 2.5;
+	}
+	[class*="eCol-50"] {
+		flex: 5;
+	}
+	[class*="eCol-75"] {
+		flex: 7.5;
+	}
+}
+/* ↑ Do not modify code above it ↑ */
+
+/* Style */
+:root {
+	scroll-behavior: smooth;
+}
+body {
+	background-color: #fff;
+	color: #616161;
+	font-family: "Lato", sans-serif;
+	font-size: 1.25rem;
+	margin: 0 0 70px 0;
+}
+main.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+main.wrapper img {
+	border: 0px solid transparent;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+h1 {
+	font-size: 2.5rem;
+	margin: 1em 0 0;
+	text-align: center;
+}
+h2 {
+	font-size: 2rem;
+	margin: 0;
+}
+h3,
+h4,
+h5,
+h6 {
+	margin: 2em 0 0;
+}
+p {
+	margin: 0.5em 0 0;
+}
+
+/* Example Design */
+[class*="eCol"] {
+	background-color: transparent;
+	border: 0px solid transparent;
+	text-align: justify;
+}
+.eRow[class*="gradient"] {
+	align-items: center;
+	padding: 0;
+}
+.eRow.gradient {
+	background: linear-gradient(180deg, #9e9e9e 66%, transparent 66%);
+}
+.eRow.gradient-ri {
+	background: linear-gradient(0deg, #9e9e9e 66%, transparent 66%);
+}
+.eRow[class*="gradient"] img {
+	border: 1rem solid #eeeeee;
+	border-radius: 4px;
+	box-sizing: border-box;
+	display: flex;
+	align-self: center;
+	max-width: 90%;
+}
+[class*="eCol"],
+[class*="eCol"].empty {
+	padding: 0.25em 1em;
+}
+[class*="eCol"].empty:before {
+	display: none;
+}
+
+@media screen and (min-width: 800px) {
+	.eRow[class*="gradient"] {
+		align-items: normal;
+		border-radius: 50%; /* optional */
+		padding: 2em 0;
+	}
+	.eRow.gradient {
+		background: linear-gradient(90deg, #9e9e9e 66%, transparent 66%);
+	}
+	.eRow.gradient-ri {
+		background: linear-gradient(270deg, #9e9e9e 66%, transparent 66%);
+	}
+	.eRow[class*="gradient"] img {
+		max-width: 100%;
+	}
+	[class*="eCol"],
+	[class*="eCol"].empty {
+		padding: 1em;
+	}
+	[class*="eCol"].empty:before {
+		content: "\00A0"; /* NON-BREAKING SPACE */
+		display: flex;
+	}
+}
+
+
+/* Scroll-to-top Butoon - Only for Demo */
+#lck_scrolltoTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+#lck_scrolltoTopButton a {
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  justify-content: center;
+  margin: 0;
+  padding: 0.25em;
+  width: 50px;
+}
+#lck_scrolltoTopButton svg {
+  fill: #fff;
+  height: 12px;
+  width: 24px;
+}
+#lck_scrolltoTopButton a:hover {
+  background-color: #ff5722;
+}
+#lck_scrolltoTopButton a:hover svg {
+  fill: #fff;
+}
+

@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Multistep Form with TailwindCSS and AlpineJS</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+  <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+
+
+<style>
+		[x-cloak] {
+			display: none;
+		}
+
+		[type="checkbox"] {
+			box-sizing: border-box;
+			padding: 0;
+		}
+
+		.form-checkbox,
+		.form-radio {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			-webkit-print-color-adjust: exact;
+			color-adjust: exact;
+			display: inline-block;
+			vertical-align: middle;
+			background-origin: border-box;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			flex-shrink: 0;
+			color: currentColor;
+			background-color: #fff;
+			border-color: #e2e8f0;
+			border-width: 1px;
+			height: 1.4em;
+			width: 1.4em;
+		}
+
+		.form-checkbox {
+			border-radius: 0.25rem;
+		}
+
+		.form-radio {
+			border-radius: 50%;
+		}
+
+		.form-checkbox:checked {
+			background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+			border-color: transparent;
+			background-color: currentColor;
+			background-size: 100% 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		
+		.form-radio:checked {
+			background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+			border-color: transparent;
+			background-color: currentColor;
+			background-size: 100% 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		#googleMap {
+			width: 80%;
+			height: 400px;
+			margin: 10px auto;
+			}
+
+			/* .tile-wrapper {
+			width: 100%;
+			display: flex;
+			gap: 32px;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			} */
+
+			/* .page {
+			height: 80vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			gap: 24px;
+			} */
+
+			/* .tile {
+			outline: 2px solid #777;
+			background-color: white;
+			text-align: center;
+			width: 80px;
+			height: 100px;
+			padding: 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			box-shadow: 1px 10px 20px rgba(0,0,0,.1);
+			border-radius: 8px;
+			opacity: 0.9;
+			} */
+
+			.tile{
+				height: 250px;
+				text-align: center;
+				position: relative;
+			}
+
+			.checkbox{
+				border: 4px solid whitesmoke;
+				position: absolute;
+				left: 6px;
+				background-color: purple;
+			}
+
+			.checkboxLC{
+				border: 4px solid whitesmoke;
+				position: absolute;
+				left: 6px;
+				background-color: purple;
+			}
+
+
+			.checkbox:checked{
+
+				background-color: #4a90e2;
+			}
+
+			svg {
+			fill: #333;
+			}
+
+			.selected {
+			outline: 2px solid darkblue;
+			opacity: 1;
+			transition: 400ms ease-out;
+			}
+
+			.selected h2 {
+			font-weight: medium;
+			font-size: 17px;    
+			}
+
+			.selected svg {
+			fill: darkslateblue;
+			}
+
+			/* none-furniture */
+
+			.multiSelect {
+			/* width: 300px; */
+			position: relative;
+			}
+
+			.multiSelect *, .multiSelect *::before, .multiSelect *::after {
+				box-sizing: border-box;
+			}
+
+			.multiSelect_dropdown {
+				font-size: 14px;
+				min-height: 35px;
+				line-height: 35px;
+				border-radius: 4px;
+				box-shadow: none;
+				outline: none;
+				background-color: #fff;
+				color: #444f5b;
+				border: 1px solid #d9dbde;
+				font-weight: 400;
+				padding: 0.5px 13px;
+				margin: 0;
+				transition: .1s border-color ease-in-out;  
+				cursor: pointer;
+			}
+
+			.multiSelect_dropdown.-hasValue {
+				padding: 5px 30px 5px 5px;
+				cursor: default;
+			}
+
+			.multiSelect_dropdown.-open {
+				box-shadow: none;
+				outline: none;
+				padding: 4.5px 29.5px 4.5px 4.5px;
+				border: 1.5px solid #4073FF;
+			}
+
+			.multiSelect_arrow::before,
+			.multiSelect_arrow::after {
+				content: '';
+				position: absolute;
+				display: block;
+				width: 2px;
+				height: 8px;
+				border-radius: 20px;
+				border-bottom: 8px solid #99A3BA;
+				top: 40%;
+				transition: all .15s ease;
+			}
+
+			.multiSelect_arrow::before {
+				right: 18px;
+				-webkit-transform: rotate(-50deg);
+				transform: rotate(-50deg);
+			}
+
+			.multiSelect_arrow::after {
+				right: 13px;
+				-webkit-transform: rotate(50deg);
+				transform: rotate(50deg);
+			}
+
+			.multiSelect_list {
+				margin: 0;
+				margin-bottom: 25px;
+				padding: 0;
+				list-style: none;
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+				max-height: calc(10 * 31px);
+				top: 28px;
+				left: 0;
+				z-index: 9999;
+				right: 0;
+				background: #fff;
+				border-radius: 4px;
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+				transition: opacity 0.1s ease, visibility 0.1s ease, -webkit-transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+				transition: opacity 0.1s ease, visibility 0.1s ease, transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+				transition: opacity 0.1s ease, visibility 0.1s ease, transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32), -webkit-transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+				-webkit-transform: scale(0.8) translate(0, 4px);
+				transform: scale(0.8) translate(0, 4px);
+				border: 1px solid #d9dbde;
+				box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.12);
+			}
+
+			.multiSelect_option {
+				margin: 0;
+				padding: 0;
+				opacity: 0;
+				-webkit-transform: translate(6px, 0);
+				transform: translate(6px, 0);
+				transition: all .15s ease;
+			}
+
+			.multiSelect_option.-selected {
+				display: none;
+			}
+
+			.multiSelect_option:hover .multiSelect_text {
+				color: #fff;
+				background: #4d84fe;
+			}
+
+			.multiSelect_text {
+				cursor: pointer;
+				display: block;
+				padding: 5px 13px;
+				color: #525c67;
+				font-size: 14px;
+				text-decoration: none;
+				outline: none;
+				position: relative;
+				transition: all .15s ease;
+			}
+
+			.multiSelect_list.-open {
+				opacity: 1;
+				visibility: visible;
+				-webkit-transform: scale(1) translate(0, 12px);
+				transform: scale(1) translate(0, 12px);
+				transition: opacity 0.15s ease, visibility 0.15s ease, -webkit-transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+				transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+				transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32), -webkit-transform 0.15s cubic-bezier(0.4, 0.6, 0.5, 1.32);
+			}
+
+			.multiSelect_list.-open + .multiSelect_arrow::before {
+				-webkit-transform: rotate(-130deg);
+				transform: rotate(-130deg);
+			}
+
+			.multiSelect_list.-open + .multiSelect_arrow::after {
+				-webkit-transform: rotate(130deg);
+				transform: rotate(130deg);
+			}
+
+			.multiSelect_list.-open .multiSelect_option {
+				opacity: 1;
+				-webkit-transform: translate(0, 0);
+				transform: translate(0, 0);
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(1) {
+			transition-delay: 10ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(2) {
+			transition-delay: 20ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(3) {
+			transition-delay: 30ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(4) {
+			transition-delay: 40ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(5) {
+			transition-delay: 50ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(6) {
+			transition-delay: 60ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(7) {
+			transition-delay: 70ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(8) {
+			transition-delay: 80ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(9) {
+			transition-delay: 90ms;
+			}
+
+			.multiSelect_list.-open .multiSelect_option:nth-child(10) {
+			transition-delay: 100ms;
+			}
+
+			.multiSelect_choice {
+				background: rgba(77, 132, 254, 0.1);
+				color: #444f5b;
+				padding: 4px 8px;
+				line-height: 17px;
+				margin: 5px;
+				display: inline-block;
+				font-size: 13px;
+				border-radius: 30px;
+				cursor: pointer;
+				font-weight: 500;
+			}
+
+			.multiSelect_deselect {
+				width: 12px;
+				height: 12px;
+				display: inline-block;
+				stroke: #b2bac3;
+				stroke-width: 4px;
+				margin-top: -1px;
+				margin-left: 2px;
+				vertical-align: middle;
+			}
+
+			.multiSelect_choice:hover .multiSelect_deselect {
+				stroke: #a1a8b1;
+			}
+
+			.multiSelect_noselections {
+				text-align: center;
+				padding: 7px;
+				color: #b2bac3;
+				font-weight: 450;
+				margin: 0;
+			}
+
+			.multiSelect_placeholder {
+				position: absolute;
+				left: 20px;
+				font-size: 14px;
+				top: 8px;
+				padding: 0 4px;
+				background-color: #fff;
+				color: #b8bcbf;
+				pointer-events: none;
+				transition: all .1s ease;
+			}
+
+			.multiSelect_dropdown.-open + .multiSelect_placeholder,
+			.multiSelect_dropdown.-open.-hasValue + .multiSelect_placeholder {
+				top: -11px;
+				left: 17px;
+				color: #4073FF;
+				font-size: 13px;
+			}
+
+			.multiSelect_dropdown.-hasValue + .multiSelect_placeholder {
+				top: -11px;
+				left: 17px;
+				color: #6e7277;
+				font-size: 13px;
+			}
+
+			/* popup */
+				.popup-box {
+				width: 400px;
+				background-color: #eee;
+				padding: 30px;
+				font-size: 36px;
+				text-align: center;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				border-radius: 10px;
+				display: none;
+				}
+				.popup-box span {
+				position: absolute;
+				top: -10px;
+				right: -10px;
+				width: 20px;
+				height: 20px;
+				background-color: green;
+				color: white;
+				padding: 5px;
+				border-radius: 50%;
+				font-size: 16px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+				}
+
+				/* overlay */
+				.overlay {
+				/* background: whitesmoke; */
+				position: fixed;
+				top: 150px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				/* width: 100%; */
+				/* height: 100%; */
+				opacity: 0;
+				visibility: hidden;
+				-webkit-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+				display: inline-block;
+				}
+				.overlay.is-on {
+				opacity: 1;
+				visibility: visible;
+				}
+				.overlay.is-on .content {
+				opacity: 1;
+				visibility: visible;
+				top: 0;
+				}
+				.overlay .content {
+				background: #fff;
+				padding: 10px;
+				position: absolute;
+				top: 200px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 300px;
+				height: max-content;
+				opacity: 0;
+				visibility: hidden;
+				-webkit-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+				}
+
+				#close {
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				font-size: 15px;
+				color: #999;
+				cursor: pointer;
+				}
+
+	</style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body class="antialiased sans-serif bg-gray-200">
+	<div x-data="app()" x-cloak>
+		<div class="max-w-3xl mx-auto px-4 py-10">
+
+			<div x-show.transition="step === 'complete'" >
+				<div class="bg-white rounded-lg p-10 flex items-center shadow justify-between" x-data="invoices()" x-init="generateInvoiceNumber(111111, 999999);" x-cloak>
+					<div class="m-auto">
+						<!-- <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+
+						<h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Request Sent</h2>
+
+						<div class="text-gray-600 mb-8 mx-auto">
+							Thank you. We have sent you an email to demo@demo.test
+						</div>
+
+						<button
+							@click="step = 1"
+							class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+						>Back to home</button> -->
+						<section class="" id="js-print-template" x-ref="printTemplate">
+							
+							<!-- <div class="popup-box m-auto">
+								<h1 class="text-blue-600 text-md">Some truck insight</h1>
+                                 <div class="flex items-center space-x-3 m-auto"> 
+									<h1 class="text-sm"> Van-body truck</h1>
+									<img class="w-6/12" src="./svg/toppng.com-truck-png-side-1389x664(1).png" alt="" srcset="">
+								 </div>
+								 <div class="flex items-center space-x-3"> 
+									<h1 class="text-sm"> Tanker truck</h1>
+									<img class="w-6/12" src="./svg/3D-render-cargo-delivery-truck-on-transparent-background-PNG.png" alt="" srcset="">
+								 </div>
+								<span>x</span>
+							  </div> -->
+							<div class="max-w-5xl mx-auto py-16 bg-white">
+							 <article class="overflow-hidden">
+							  <div class="bg-[white] rounded-b-md">
+							   <div class="p-9">
+								<div class="space-y-6 text-slate-700">
+								 <!-- <img class="object-cover h-12" src="https://pbs.twimg.com/profile_images/1513243060834123776/dL8-d7zI_400x400.png" /> -->
+								 <i @click="printInvoice()" class="fa fa-print text-2xl text-gray-500"></i>
+
+								 
+						   
+								 <p class="text-xl font-extrabold tracking-tight uppercase font-body text-blue-600">
+								  Quote
+								  
+								 </p>
+								</div>
+							   </div>
+							   <!-- <div class="p-9">
+								<div class="flex w-full">
+								 <div class="grid grid-cols-4 gap-12">
+								  <div class="text-sm font-light text-slate-500">
+								   <p class="text-sm font-normal text-slate-700">
+									Invoice Detail:
+								   </p>
+								   <p>Deon Removal</p>
+								   <p>Fake Street 123</p>
+								   <p>San Javier</p>
+								   <p>CA 1234</p>
+								  </div>
+								  <div class="text-sm font-light text-slate-500">
+								   <p class="text-sm font-normal text-slate-700">Billed To</p>
+								   <p>The Boring Company</p>
+								   <p>Tesla Street 007</p>
+								   <p>Frisco</p>
+								   <p>CA 0000</p>
+								  </div>
+								  <div class="text-sm font-light text-slate-500">
+								   <p class="text-sm font-normal text-slate-700">Invoice Number</p>
+								   <p>000000</p>
+						   
+								   <p class="mt-2 text-sm font-normal text-slate-700">
+									Date of Issue
+								   </p>
+								   <p>00.00.00</p>
+								  </div>
+								  <div class="text-sm font-light text-slate-500">
+								   <p class="text-sm font-normal text-slate-700">Terms</p>
+								   <p>0 Days</p>
+						   
+								   <p class="mt-2 text-sm font-normal text-slate-700">Due</p>
+								   <p>00.00.00</p>
+								  </div>
+								 </div>
+								</div>
+							   </div> -->
+						   
+							   <div class="p-9">
+								<div class="flex flex-col mx-0 mt-8">
+								 <table class="min-w-full divide-y divide-slate-500">
+								  <thead>
+								   <tr>
+									<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-normal text-slate-700 sm:pl-6 md:pl-0">
+									 Description
+									</th>
+									<th scope="col" class="hidden py-3.5 px-3 text-right text-sm font-normal text-slate-700 sm:table-cell">
+									 <!-- Quantity -->
+									 Amount
+									</th>
+									<th scope="col" class="hidden py-3.5 px-3 text-right text-sm font-normal text-slate-700 sm:table-cell">
+									 <!-- Rate -->
+									</th>
+									<th scope="col" class="py-3.5 pl-3 pr-4 text-right text-sm font-normal text-slate-700 sm:pr-6 md:pr-0">
+									 <!-- Amount -->
+									</th>
+								   </tr>
+								  </thead>
+								  <tbody>
+								   <tr class="border-b border-slate-200">
+									<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0 tb-type">
+										<div class="move-type"></div>
+										<div class="res-type"></div>
+										<div class="LC"></div>
+										<div class="EL"></div>
+										<div class="ST"></div>
+									 <!-- <div class="font-medium text-slate-700 furn-type">Tesla Truck</div> -->
+									 <!-- <div class="mt-0.5 text-slate-500 sm:hidden">
+									  1 unit at $0.00
+									 </div> -->
+									</td>
+									<td class="hidden px-3 py-4 text-sm text-right text-slate-500 sm:table-cell tb-unit">
+										<div class="move-type-p"></div>
+										<div class="res-type-p"></div>
+										<div class="LC-p"></div>
+										<div class="EL-p"></div>
+										<div class="ST-p"></div>
+									</td>
+									<!-- <td class="hidden px-3 py-4 text-sm text-right text-slate-500 sm:table-cell">
+									 $0.00
+									</td>
+									<td class="py-4 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
+									 $0.00
+									</td> -->
+
+									<tr class="border-b border-slate-200">
+										<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
+										 <div class="font-medium text-orange-700 non-furnArr">
+										 
+										 </div>
+										 <div class="mt-0.5 text-slate-500 sm:hidden">
+										  cost per non-furniture item is R50.00
+										 </div>
+										</td>
+										<td class="py-4 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
+											cost per non-furniture R50.00
+										</td>
+									</tr>
+
+
+
+								   </tr>
+								   <tr class="border-b border-slate-200">
+									<td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
+									 <div class="font-medium text-slate-700">
+									  Traveling Distance
+									 </div>
+									 <div class="mt-0.5 text-slate-500 sm:hidden">
+									  <!-- 1 unit at $75.00 -->
+									 </div>
+									</td>
+									<td class="hidden px-3 py-4 text-sm text-right text-slate-500 sm:table-cell dst">
+									 4
+									</td>
+									<td class="hidden px-3 py-4 text-sm text-right text-slate-500 sm:table-cell">
+									 cost per liter R21.08
+									</td>
+									<!-- <td class="py-4 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
+									 $0.00
+									</td> -->
+								   </tr>
+								
+						   
+								   <!-- Here you can write more products/tasks that you want to charge for-->
+								  </tbody>
+								  <tfoot>
+									<tr>
+									<th scope="row" colspan="3" class="hidden pt-6 pl-6 pr-3 text-sm font-light text-right text-slate-500 sm:table-cell md:pl-0">
+									 Recommended vehicle
+									</th>
+									<th scope="row" class="pt-6 pl-4 pr-3 text-sm font-light text-left text-slate-500 sm:hidden">
+									 Recommended vehicle
+									</th>
+									<!-- <td class="pt-6 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0 quan-sum">
+									 Tanker
+									</td> -->
+
+									<td class="pt-6 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0 vcl">
+										
+									</td>
+								   </tr>
+								   <tr>
+									<th scope="row" colspan="3" class="hidden pt-6 pl-6 pr-3 text-sm font-light text-right text-slate-500 sm:table-cell md:pl-0 ">
+									 From Desc
+									</th>
+									<th scope="row" class="pt-6 pl-4 pr-3 text-sm font-light text-left text-slate-500 sm:hidden">
+									 Subtotal
+									</th>
+									<td class="pt-6 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0 sub-total">
+									 0
+									</td>
+								   </tr>
+								   <!-- <tr>
+									<th scope="row" colspan="3" class="hidden pt-6 pl-6 pr-3 text-sm font-light text-right text-slate-500 sm:table-cell md:pl-0">
+									 Discount
+									</th>
+									<th scope="row" class="pt-6 pl-4 pr-3 text-sm font-light text-left text-slate-500 sm:hidden">
+									 Discount
+									</th>
+									<td class="pt-6 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
+									 $0.00
+									</td>
+								   </tr> -->
+								   <tr>
+									<th scope="row" colspan="3" class="hidden pt-4 pl-6 pr-3 text-sm font-light text-right text-slate-500 sm:table-cell md:pl-0">
+									 Tax
+									</th>
+									<th scope="row" class="pt-4 pl-4 pr-3 text-sm font-light text-left text-slate-500 sm:hidden">
+									 Tax
+									</th>
+									<td class="pt-4 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
+									 15%
+									</td>
+								   </tr>
+								   <tr>
+									<th scope="row" colspan="3" class="hidden pt-4 pl-6 pr-3 text-sm font-normal text-right text-slate-700 sm:table-cell md:pl-0">
+									 Total
+									</th>
+									<th scope="row" class="pt-4 pl-4 pr-3 text-sm font-normal text-left text-slate-700 sm:hidden">
+									 Total
+									</th>
+									<td class="pt-4 pl-3 pr-4 text-sm font-normal text-right text-slate-700 sm:pr-6 md:pr-0 total text-green-600 font-bold">
+									 0
+									</td>
+								   </tr>
+								  </tfoot>
+								 </table>
+								</div>
+							   </div>
+						   
+							   <div class="mt-48 p-9">
+								<div class="border-t pt-9 border-slate-200">
+								 <div class="text-sm font-light text-slate-700">
+								  <p>
+								   Payment terms are 14 days. Please be aware that according to the
+								   Late Payment of Unwrapped Debts Act 0000. If payment of the revised invoice
+								   is not received within a further 14 days, additional interest
+								   will be charged to the overdue account and a statutory rate of
+								   8% plus Bank of England base of 0.5%, totalling 8.5%. Parties
+								   cannot contract out of the Act’s provisions.
+								  </p>
+								 </div>
+								</div>
+							   </div>
+							  </div>
+							 </article>
+							</div>
+
+							<button
+							@click="step = 3"
+							
+							class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+						>Previous</button> 
+						   </section>
+					</div>
+				</div>
+			</div>
+
+			<div x-show.transition="step != 'complete'">	
+				<!-- Top Navigation -->
+				<div class="border-b-2 py-4">
+					<div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Step: ${step} of 3`"></div>
+					<div class="flex flex-col md:flex-row md:items-center md:justify-between">
+						<div class="flex-1">
+							<div x-show="step === 1">
+								<div class="text-lg font-bold text-gray-700 leading-tight">Your Contact Info</div>
+							</div>
+							
+							<div x-show="step === 2">
+								<div class="text-lg font-bold text-gray-700 leading-tight">Furniture list</div>
+							</div>
+
+							<div x-show="step === 3">
+								<div class="text-lg font-bold text-gray-700 leading-tight">Displacement</div>
+							</div>
+						</div>
+
+						<div class="flex items-center md:w-64">
+							<div class="w-full bg-white rounded-full mr-2">
+								<div class="rounded-full bg-green-500 text-xs leading-none h-2 text-center text-white" :style="'width: '+ parseInt(step / 3 * 100) +'%'"></div>
+							</div>
+							<div class="text-xs w-10 text-gray-600" x-text="parseInt(step / 3 * 100) +'%'"></div>
+						</div>
+					</div>
+				</div>
+				<!-- /Top Navigation -->
+
+				<!-- Step Content -->
+				<div class="py-10">	
+					<div x-show.transition.in="step === 1">
+            <form class="w-full">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        First Name *
+      </label>
+      <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+      <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+        Last Name *
+      </label>
+      <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        Estimates move date *
+      </label>
+      <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="date" placeholder="Jane">
+      <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+		ESTIMATED DELIVERY DATE *
+      </label>
+      <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="Doe">
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+        Email Address *
+      </label>
+      <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" placeholder="********@*****.**">
+    </div>
+  </div>
+
+  <div class="containner my-4">
+	<div class="divide-y">
+	  <div class="flex items-start space-x-3 py-6">
+		<input type="checkbox" class="button-pop-up border-gray-300 rounded h-5 w-5" />
+
+		<!-- <h1>Simple jQuery Popup</h1> -->
+<!-- <div class="buttons"><a>FadeInUp</a></div> -->
+<div class="overlay">
+  <div class="content rounded-md border-4 border-blue-400">
+	<!-- boxes -->
+
+
+	<form action="" class="">
+		<div class="mb-4">
+		  <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+			  Number of boxes
+			</label>
+		  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="number" placeholder="Text input">
+		</div>
+		<div class="mb-4">
+		  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+			  Box sizes
+			</label>
+		  <div class="relative">
+			<select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+			  <option>Small</option>
+			  <option>medium</option>
+			  <option>large</option>
+			  <option>extra large</option>
+			  </select>
+			<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+			  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			</div>
+		  </div>
+		</div>
+		<div class="mb-4">
+		  <label class="block">
+			<!-- <input class="mr-2 leading-tight" type="checkbox"> -->
+			<span class="text-sm">
+			  Do you like us to package for you?
+			</span>
+		  </label>
+		</div>
+		<div class="mb-4">
+		  <label class="inline-flex items-center">
+			<input type="radio" class="form-radio" name="accountType" value="1">
+			<span class="ml-2">Yes</span>
+		  </label>
+		  <label class="inline-flex items-center ml-6">
+			<input type="radio" class="form-radio" name="accountType" value="2">
+			<span class="ml-2">No</span>
+		  </label>
+		</div>
+		<!-- <div class="mb-4">
+		  <label class="block text-gray-700 text-sm font-bold mb-2">
+		Message
+		<textarea class="shadow form-textarea mt-1 block w-full border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" placeholder="Textarea"></textarea>
+	  </label>
+		</div>
+		<div class="flex items-center justify-between">
+		  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+			  Submit
+			</button>
+		</div> -->
+	  </form>
+
+
+	<!-- boxes -->
+    <div id="close"><i class="fa fa-times" aria-hidden="true"></i></div>
+  </div>
+</div>
+  
+		<div class="flex flex-col">
+		  <h1 class="text-gray-700 font-medium normal-case">DO YOU REQUIRE SUPPLY & PACKING OF BOXES ?</h1>
+		</div>
+	  </div>
+  
+	  <div class="flex items-start space-x-3 py-6">
+		<input type="checkbox" class="border-gray-300 rounded h-5 w-5" />
+  
+		<div class="flex flex-col">
+		  <h1 class="text-gray-700 font-medium leading-none normal-case">DO YOU REQUIRE STORAGE ?</h1>
+		</div>
+	  </div>
+  
+	  <div class="flex items-start space-x-3 py-6">
+		<input type="checkbox" class="border-gray-300 rounded h-5 w-5" />
+  
+		<div class="flex flex-col">
+		  <h1 class="text-gray-700 font-medium leading-none normal-case">DO YOU REQUIRE INSURANCE ?</h1>
+		</div>
+	  </div>
+	</div>
+  </div>
+ 
+    
+</form>
+
+					</div>
+			<div x-show.transition.in="step === 2">
+
+						<div class="mb-5">
+						<!-- <section class="task-list">
+							<div class="task-filter">
+								<label for="filter" class="text-lg text-blue-700 ">Filter</label>
+								<input id="filter" name="filter" type="text" placeholder="Filter" class="h-10 px-4 shadow-sm">
+							</div>
+							<ul class="task-items mt-4">
+								<li class="bg-purple-500 w-7/12 p-2 shadow-sm my-4 text-gray-100 rounded-md flex justify-between"><p>TV</p><span class=""> 2 </span><a class="delete-task" href="#"><i class="fas fa-times"></i></a></li>
+								<li class="bg-purple-500 w-7/12 p-2 shadow-sm my-4 text-gray-100 rounded-md flex justify-between"><p>Table</p><span class=""> 3 </span><a class="delete-task" href="#"><i class="fas fa-times"></i></a></li>
+								<li class="bg-purple-500 w-7/12 p-2 shadow-sm my-4 text-gray-100 rounded-md flex justify-between"><p>bed</p><span class=""> 4 </span><a class="delete-task" href="#"><i class="fas fa-times"></i></a></li>
+
+							</ul>
+					
+							<form class="task-form mt-6">
+								<label for="task" class="text-lg text-blue-700 ">Add Furniture</label>
+					       <input id="task" type="text" name="task"></input>
+							<select id="task" name="task" class="select-task h-10 px-4">
+								<option>Bed</option>
+								<option>TV Stand</option>
+								<option>TV</option>
+								<option>Washing Machine</option>
+								<option>Dish Washer</option>
+								<option>Chair</option>
+								<option>Table</option>
+							</select>
+								<input id="unit" type="number" name="unit" class="unit h-10 px-4"></input>
+								<button type="submit" value="Add task" class="bg-green-500 h-10 px-4 text-white rounded-md">Add</button>
+								<a href="#" class="clear-tasks button text-red-600">Clear All</a>
+							</form>
+						</section> -->							
+								<form class="task-form mt-6">
+								<label for="task" class="text-md text-blue-700 block py-2">Move size</label>
+								 <select id="move-size" name="task" class="select-task h-10 px-4 w-10/12">
+									 <option value="1">A few items</option>
+									 <option value="2">studio apartment</option>
+									 <option value="3">1 bedroom residence</option>
+									 <option value="4">2 bedroom residence</option>
+									 <option value="5">3 bedroom residence</option>
+									 <option value="6">4 bedroom residence</option>
+									 <option value="7">5+ bedroom residence</option>
+								 </select>
+
+								 <label for="task" class="text-md text-blue-700 block pt-8 pb-2">Type of residence?</label>
+								 <select id="place-type" name="task" class="select-task h-10 px-4 w-10/12">
+									 <option value="1">flat</option>
+									 <option value="2">appartment</option>
+									 <option value="3">townhouse</option>
+									 <option value="4">house</option>
+								 </select>
+
+								 <div class="-mt-6 floor">
+								 <label for="task" class="text-sm text-blue-700 block pt-8 pb-2">Choose your Floor? <span class="text-red-500">(only applicable if you live in a flat)</span></label>
+								 <!-- <input type="number" name="" id=""> -->
+								 <select id="place-type" name="task" class="select-floor h-10 px-4 w-6/12">
+									 <option value="1">first</option>
+									 <option value="2">second</option>
+									 <option value="3">third</option>
+									 <option value="4">fifth</option>
+								 </select>
+								</div>
+
+								 <!-- non-furniture -->
+								 <div class="multiSelect mt-8  w-10/12">
+									<select multiple class="multiSelect_field" data-placeholder="Add non furniture items">
+									  <option value="Bicycle">Bicycle</option>
+									  <option value="Pool table">Pool table</option>
+									  <option value="Crates">Crates</option>
+									  <option value="welder">welder</option>
+									  <!-- <option value="edge">Edge</option>
+									  <option value="vivaldi">Vivaldi</option> -->
+									</select>
+								  </div>
+								  
+								  
+								  
+								  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+									<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="iconX">
+									  <g stroke-linecap="round" stroke-linejoin="round">
+										  <line x1="18" y1="6" x2="6" y2="18"></line>
+										  <line x1="6" y1="6" x2="18" y2="18"></line>
+									  </g>
+									</symbol>
+								  </svg>
+
+								<!--end non-furniture -->
+
+
+								 <div class="page mt-8 ml-5">
+									<section class="w-full flex items-center space-x-3" id="effects_wrapper">
+									  
+									  <div class=" tile w-3/12 bg-blue-300 px-3 py-4 rounded-md">
+										<input type="checkbox" id="effect_one" class=" checkbox checkboxLC" name="blur" value="123">
+										<label for="effect_one">
+											<img src="./svg/long-carry.svg" class="w-10/12 mt-8" alt="" srcset="">
+										  <h2 class="text-white mt-2">Long Carry</h2>
+										  <p class="text-white mt-2 text-sm">Distance between parking and your doorstep.</p>
+										</label>
+									  </div>
+									  
+									  <div class="tile w-3/12 bg-purple-400 px-3 py-4 rounded-md">
+										<input type="checkbox" id="effect_two" class="checkbox checkboxEL" name="blur">
+										<label for="effect_two">
+											<img src="./svg/elevator.svg" width="100" class=" mt-8" alt="" srcset="">
+										  <h2 class="text-white mt-2">Elevator</h2>
+										  <p class="text-white mt-2 text-sm">Is there an elevator in the building?</p>
+										</label>
+									  </div>
+									  
+									  <div class="tile w-3/12 bg-orange-400 px-3 py-4 rounded-md">
+										<input type="checkbox" id="effect_thee" class="checkbox checkboxST" name="blur">
+										<label for="effect_thee">
+											<img src="./svg/shuttle.svg" width="110" class=" mt-8" alt="" srcset="">
+										  <h2 class="text-white mt-2">Trolley</h2>
+										  <p class="text-white mt-2 text-sm">Trolley is needed where a truck can't access your home</p>
+										</label>
+									  </div>
+									  
+									</section>
+								  </div>
+								 </form>
+						</div>
+
+			</div>
+					<div x-show.transition.in="step === 3">				
+		<div class="jumbotron">
+        <div class="container-fluid relative">
+            <h1 class="text-blue-700 mb-2">Help us calculate the distances</h1>
+            <p>This Will Help You Calculate Your Travelling Distances.</p>
+            <form class="form-horizontal">
+                <div class="form-group flex">
+                    <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle mt-8 text-blue-600"></i></label>
+                    <div class="col-xs-4">
+                        <input type="text" id="from" placeholder="Origin" class="form-control h-10 px-4 my-6 mx-2 shadow-sm">
+                    </div>
+               </div>
+               <div class="form-group flex">
+                
+                    <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt mt-3 text-green-600"></i></label>
+                    <div class="col-xs-4">
+                        <input type="text" id="to" placeholder="Destination" class="form-control h-10 px-4 mb-4 mx-2 shadow-sm">
+                    </div>
+                  
+                 </div>
+                 
+            </form>
+
+            <div class="col-xs-offset-2 col-xs-10 absolute  right-0 top-0">
+                <button class="find-route btn bg-orange-500 p-4 rounded-md" onclick="calcRoute();"><i class="fas fa-map-signs text-gray-100"></i></button>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div id="googleMap">
+
+            </div>
+            <div id="output">
+
+            </div>
+        </div>
+
+    </div>
+					</div>
+				</div>
+				<!-- / Step Content -->
+			</div>
+		</div>
+
+		<!-- Bottom Navigation -->	
+		<div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
+			<div class="max-w-3xl mx-auto px-4">
+				<div class="flex justify-between">
+					<div class="w-1/2">
+						<button
+							x-show="step > 1"
+							@click="step--"
+				
+							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+						>Previous</button>
+					</div>
+
+					<div class="w-1/2 text-right">
+						<button
+							x-show="step < 3"
+							@click="step++"
+							class=" next w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+						>Next</button>
+
+						<button
+							@click="step = 'complete'"
+							x-show="step === 3"
+							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+						>Complete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->	
+	</div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNOw0QgCxQQlhmjAHEwDxJHe2oyg2gw-w&libraries=places"></script>
+	<script>
+		function app() {
+			return {
+				step: 1, 
+				passwordStrengthText: '',
+				togglePassword: false,
+				password: '',
+				gender: 'Male',
+
+				checkPasswordStrength() {
+					var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+					var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
+					let value = this.password;
+
+					if (strongRegex.test(value)) {
+						this.passwordStrengthText = "Strong password";
+					} else if(mediumRegex.test(value)) {
+						this.passwordStrengthText = "Could be stronger";
+					} else {
+						this.passwordStrengthText = "Too weak";
+					}
+				}
+			}
+		}
+
+
+
+		function invoices() {
+			return {
+				generateInvoiceNumber(minimum, maximum) {
+					const randomNumber = Math.floor(Math.random() * (maximum - minimum)) + minimum;
+					this.invoiceNumber = '#INV-'+ randomNumber;
+				},
+
+				printInvoice() {
+					var printContents = this.$refs.printTemplate.innerHTML;
+					var originalContents = document.body.innerHTML;
+
+					document.body.innerHTML = printContents;
+					window.print();
+					document.body.innerHTML = originalContents;
+				}
+			}
+		}
+	</script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+  <script src="./script.js"></script>
+
+</body>
+<!-- partial -->
+  
+</body>
+</html>

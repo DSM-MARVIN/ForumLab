@@ -1,0 +1,47 @@
+body {
+  color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 72px;
+  height: 100vh;
+  width: 100%;
+}
+
+.panel {
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+}
+
+.html {
+  background-color: #e54d26;
+}
+
+.css {
+  background-color: #0171bb;
+}
+
+.js {
+  background-color: #f1da4e;
+}
+
+.sass {
+  background-color: #cd669a;
+}
+
+.markdown {
+  background-color: #0f6cb1;
+}
+
+.codepen {
+  background-color: #333;
+}
+
+i:hover {
+  opacity: 0.5;
+}
+
+.ion-social-javascript {
+  color: #333;
+}
