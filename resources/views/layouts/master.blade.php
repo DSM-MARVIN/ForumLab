@@ -77,7 +77,7 @@
          </div>
         </nav>
         {{-- Navbar --}}
-    <x-partials.nav />
+    <!-- <x-partials.nav /> -->
     <div id="app">
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -133,6 +133,16 @@
                 </div>
             </div>
         </nav> -->
+
+
+
+
+
+
+
+
+
+        
 
         <main class="py-4">
             @yield('content')

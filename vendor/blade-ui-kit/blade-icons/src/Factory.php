@@ -223,7 +223,19 @@ final class Factory
             }
         }
 
-        return array_merge($attributes, $this->config['attributes'], (array) ($this->sets[$set]['attributes'] ?? []));
+        $attributes = array_merge(
+            $this->config['attributes'],
+            (array) ($this->sets[$set]['attributes'] ?? []),
+            $attributes,
+        );
+
+        foreach ($attributes as $key => $value) {
+            if (is_string($value)) {
+                $attributes[$key] = str_replace('"', '&quot;', $value);
+            }
+        }
+
+        return $attributes;
     }
 
     private function buildClass(string $set, string $class): string

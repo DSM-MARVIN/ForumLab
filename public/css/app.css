@@ -48,12 +48,12 @@ Remove the margin in all browsers.
 
 body {
   margin: 0;
-  background-color: #00122e;
+  background-color: whitesmoke;
 }
 
 .article-bg{
-  background-color: #182842;
-  color: lightgray;
+  background-color: white;
+  color: #333;
   border-radius: 15px;
 }
 
@@ -64,8 +64,8 @@ body {
 }
 
 .side-bg{
-  background-color: #182842;
-  color: lightgray;
+  background-color: white;
+  color: #333;
   border-radius: 15px;
 }
 

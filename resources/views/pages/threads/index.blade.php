@@ -1,9 +1,9 @@
 <x-guest-layout>
     <main class="wrapper">
-        <section class="grid grid-cols-4 gap-8 mt-8">
+        <section class="w-full">
             {{-- Sidenavbar --}}
 
-            <div class="flex flex-col col-span-3 gap-y-4">
+            <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
                 {{-- Alerts --}}
                 <x-alerts.main />
 
@@ -16,7 +16,6 @@
                     {{ $threads->render() }}
                 </div>
             </div>
-            <x-partials.sidenav />
 
         </section>
     </main>

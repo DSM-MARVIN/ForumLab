@@ -3,7 +3,7 @@
     <div class="relative grid grid-cols-8 gap-3">
 
         {{-- Avatar --}}
-        <div class="col-span-1">
+        <div class="col-span-2">
             <x-user.avatar :user="$thread->author()" class="user-img"/>
         </div>
 
@@ -51,20 +51,22 @@
                     </svg>
                     <span class="text-xs text-gray-500">{{ $thread->created_at->diffForHumans() }}</span>
                 </div>
-            </div>
-        </div>
 
-        {{-- Tags --}}
-        <div class="absolute right-2">
+                {{-- Tags --}}
+        <div class="lex items-center space-x-2">
             <div class="flex space-x-2">
                 <div class="p-1 text-xs text-white bg-gray-400" style="border-radius: 4px;">
                 {{$thread->category->name()}}
 
                 </div>
-
- 
             </div>
         </div>
+
+
+            </div>
+        </div>
+
+
     </div>
 </article>
 

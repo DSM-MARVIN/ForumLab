@@ -9,13 +9,13 @@ use Illuminate\Contracts\View\View;
 
 class FormButton extends BladeComponent
 {
-    /** @var string|null */
+    /** @var string */
     public $action;
 
     /** @var string */
     public $method;
 
-    public function __construct(string $action = null, string $method = 'POST')
+    public function __construct(string $action, string $method = 'POST')
     {
         $this->action = $action;
         $this->method = strtoupper($method);

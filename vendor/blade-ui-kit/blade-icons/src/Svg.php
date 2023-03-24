@@ -18,7 +18,7 @@ final class Svg implements Htmlable
     public function __construct(string $name, string $contents, array $attributes = [])
     {
         $this->name = $name;
-        $this->contents = $contents;
+        $this->contents = $this->deferContent($contents, $attributes['defer'] ?? false);
         $this->attributes = $attributes;
     }
 
@@ -39,5 +39,28 @@ final class Svg implements Htmlable
             sprintf('<svg%s', $this->renderAttributes()),
             $this->contents,
         );
+    }
+
+    protected function deferContent(string $contents, $defer = false): string
+    {
+        if ($defer === false) {
+            return $contents;
+        }
+
+        $svgContent = strip_tags($contents, ['circle', 'ellipse', 'line', 'path', 'polygon', 'polyline', 'rect', 'g', 'mask', 'defs', 'use']);
+        $hash = 'icon-'.(is_string($defer) ? $defer : md5($svgContent));
+        $contents = str_replace($svgContent, strtr('<use href=":href"></use>', [':href' => '#'.$hash]), $contents);
+        $contents .= <<<BLADE
+
+                @once("{$hash}")
+                    @push("bladeicons")
+                        <g id="{$hash}">
+                            {$svgContent}
+                        </g>
+                    @endpush
+                @endonce
+            BLADE;
+
+        return $contents;
     }
 }
