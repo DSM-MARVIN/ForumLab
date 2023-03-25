@@ -15,3 +15,5 @@ window.choices = (element) => {
         removeItemButton: true,
     });
 }
+
+

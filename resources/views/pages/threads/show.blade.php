@@ -1,31 +1,37 @@
 <x-guest-layout>
-    <main class="grid grid-cols-4 gap-8 mt-8 wrapper">
+    <main class=" mt-8 w-full">
 
 
         <section class="flex flex-col col-span-3 gap-y-4">
+            
 
             <x-alerts.main />
 
             <!-- <small class="text-sm text-gray-400">Threads>{{ $category->name() }}>{{ $thread->title() }}</small> -->
 
             <article class="p-5 side-bg shadow">
-                <div class="relative grid grid-cols-8">
-
-                    {{-- Avatar --}}
+            <x-partials.sidenav :thread="$thread" />
+            {{-- Avatar --}}
                     <div class="col-span-1" class="user-img">
                         <x-user.avatar :user="$thread->author()" class="user-img"/>
                     </div>
+                <div class="relative grid grid-cols-8">
 
                     {{-- Thread --}}
-                    <div class="relative col-span-7 space-y-6">
+                    <div class="relative col-span-7 space-y-4">
                         <div class="space-y-3">
-                            <h2 class="text-xl tracking-wide hover:text-blue-400">
+                            <h2 class="text-md tracking-wide hover:text-blue-400">
                                 {{ $thread->title() }}
                             </h2>
                             <div class="text-gray-500">
                                 {!! $thread->body() !!}
-                            </div>
+                            </div>  
+                            <a href="/storage/{{$thread->image}}">
                             <img src="/storage/{{$thread->image}}" alt="" srcset="">
+                            </a>
+                            <div id="image-viewer">
+                            <img class="modal-content" id="full-image">
+                            </div>
                         </div>
 
                         <div class="flex justify-between">
@@ -107,7 +113,7 @@
             </div>
             @endauth
         </section>
-        <x-partials.sidenav :thread="$thread" />
+        <!-- <x-partials.sidenav :thread="$thread" /> -->
 
     </main>
     

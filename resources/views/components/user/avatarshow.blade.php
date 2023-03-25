@@ -1,5 +1,5 @@
 @isset($user)
-<a href="{{ route('profile', $user) }}" class="flex items-center text-sm text-center transition border-2 border-transparent rounded-full focus:outline-none">
+<a href="{{ route('profile', $user) }}" class="items-center text-sm text-center transition border-2 border-transparent rounded-full focus:outline-none">
 <img {{ $attributes->merge(['class' => 'object-cover w-16 h-16 rounded' ]) }} src="{{ $user->profile_photo_url }}" alt="{{ $user->name() }}" />
    
 <span class="mt-2 text-xs pl-2">{{ $user->name() }}</span>

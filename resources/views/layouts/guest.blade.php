@@ -54,6 +54,181 @@
     </header> --> 
    
 
+    <header>
+     <nav
+        class="
+          flex flex-wrap
+          items-center
+          justify-between
+          w-full
+          py-4
+          md:py-0
+          px-4
+          text-lg text-gray-700
+          bg-white
+          h-20
+        "
+      >
+       <div class="absolute top-6 left-7">
+          <a href="/">
+            <img src="/img/6230173.png" alt="" srcset="" width="50px">
+        </div>
+
+        </a>
+       
+
+
+
+       
+          <nav x-data="{ open: false }" class="bg-white absolute top-2 right-2">
+    <!-- Primary Navigation Menu -->
+    <div class="mt-3 z-index-1  lg:px-8 bg-white">
+        <div class=" ">
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="md:p-4 py-2 block text-sm">
+         WELCOME {{auth()->user()->name}}
+          </div>
+                <!-- Settings Dropdown -->
+                @auth
+                <div class="relative ml-3">
+                    <x-jet-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <button class="flex items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <x-heroicon-o-chevron-down class="w-5 h-5 text-gray-400" />
+                            </button>
+                            @else
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                    {{ Auth::user()->name }}
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </span>
+                            @endif
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <!-- Account Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Account') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-jet-dropdown-link>
+
+                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                {{ __('API Tokens') }}
+                            </x-jet-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-gray-100"></div>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-jet-dropdown>
+                </div>
+                @else
+                <div class="space-x-4">
+                    <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-jet-nav-link>
+                </div>
+
+                @endauth
+            </div>
+
+            <!-- Hamburger -->
+            <div class="flex items-center -mr-2 sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 border hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+        </div>
+
+        @auth
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-gray-200">
+            <div class="flex items-center px-4">
+                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                <div class="flex-shrink-0 mr-3">
+                    <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                </div>
+                @endif
+
+                <div>
+                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
+            </div>
+
+            <div class="mt-3 space-y-1">
+                <!-- Account Management -->
+                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                    {{ __('Profile') }}
+                </x-jet-responsive-nav-link>
+
+
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-jet-responsive-nav-link>
+                </form>
+
+            </div>
+            @else
+            <div class="mt-3 space-y-1">
+
+                <!-- Login -->
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-jet-responsive-nav-link>
+
+                <!-- Registration -->
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-jet-responsive-nav-link>
+
+            </div>
+        </div>
+        @endauth
+    </div>
+</nav>
+    </nav>
+  </header>
+
 
 
     {{-- Blade UI Kit --}}
@@ -117,7 +292,7 @@
         </div>
         <ul>
           <li class="mb-10">
-            <a class="flex items-center">
+            <a class="flex items-center" href="/threads">
               <svg
                 width="24"
                 height="24"
@@ -496,15 +671,15 @@
       <div
         class="flex justify-between mt-4 space-y-3 mb-8 flex-col md:flex-row md:space-x-4 md:space-y-0 md:mb-14"
       >
-        <div class="p-5 bg-[#4F46BA] rounded-xl w-full views">
+        <div class="p-5 bg-indigo-600 rounded-xl w-full views text-gray-300">
           <p class="text-base font-bold text-white opacity-30">VIEWS</p>
           <p class="text-base font-semibold text-white">7,482,120</p>
         </div>
-        <div class="p-5 bg-[#4F46BA] rounded-xl w-full follows">
+        <div class="p-5 bg-green-600 rounded-xl w-full follows">
           <p class="text-base font-bold text-white opacity-30">FOLLOWS</p>
           <p class="text-base font-semibold text-white">54,364</p>
         </div>
-        <div class="p-5 bg-[#4F46BA] rounded-xl w-full likes">
+        <div class="p-5 bg-purple-600 rounded-xl w-full likes">
           <p class="text-base font-bold text-white opacity-30">LIKES</p>
           <p class="text-base font-semibold text-white">125,685</p>
         </div>
@@ -538,7 +713,7 @@
       >
         <div class="w-full xl:w-2/3">
           <h2 class="text-base font-bold mb-4">Analytics</h2>
-          <div class="p-4 bg-white rounded-xl drop-shadow-md mb-4 xl:mb-10">
+          <div class="p-4 bg-white rounded-xl shadow-md mb-4 xl:mb-10">
             <div class="flex justify-between items-center">
               <h3 class="text-sm font-bold mb-8 text-[#1B2767]">Daily Views</h3>
               <div class="flex items-center mb-4">
@@ -697,7 +872,7 @@
             class="flex flex-col space-y-4 mb-8 md:flex-row md:space-y-0 md:space-x-4 md:mb-14"
           >
             <div
-              class="w-full p-4 bg-[#F2E9FF] rounded-xl drop-shadow-md h-1/2 md:w-2/4"
+              class="w-full p-4 bg-[#F2E9FF] rounded-xl shadow-md h-1/2 md:w-2/4"
             >
               <div class="flex justify-between mb-3">
                 <img
@@ -732,7 +907,7 @@
               </h3>
               <p class="text-sm text-[#7B7B7B]">By Mike Taylor</p>
             </div>
-            <div class="w-full p-4 bg-white rounded-xl drop-shadow-md md:w-1/4">
+            <div class="w-full p-4 bg-white rounded-xl shadow-md md:w-1/4">
               <div class="w-full h-20 mb-3">
                 <svg
                   width="35"
@@ -821,7 +996,7 @@
                 Scheduled Post
               </h3>
             </div>
-            <div class="w-full p-4 bg-white rounded-xl drop-shadow-md md:w-1/4">
+            <div class="w-full p-4 bg-white rounded-xl shadow-md md:w-1/4">
               <div class="w-full h-20 mb-3">
                 <svg
                   width="35"
@@ -856,7 +1031,7 @@
           <h2 class="text-base font-bold mb-4 text-[#242121]">
             Events Distribution
           </h2>
-          <div class="w-full p-4 bg-white rounded-xl drop-shadow-md">
+          <div class="w-full p-4 bg-white rounded-xl shadow-md">
             <h3 class="text-sm font-bold mb-4 text-[#1B2767] mb-8 text-center">
               Last 30 Days Performance
             </h3>
@@ -1205,7 +1380,7 @@
         class="flex flex-col items-center space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4"
       >
         <div
-          class="w-full py-4 px-8 bg-white rounded-xl drop-shadow-md flex items-center justify-between"
+          class="w-full py-4 px-8 bg-white rounded-xl shadow-md flex items-center justify-between"
         >
           <div>
             <p class="text-xl text-[#393939] font-bold mb-4">Weekly Target</p>
@@ -1238,10 +1413,10 @@
           </svg>
         </div>
         <div
-          class="w-full py-4 px-8 bg-[#51459E] rounded-xl drop-shadow-md flex items-center justify-between"
+          class="w-full py-4 px-8 bg-[#51459E] rounded-xl shadow-md flex items-center justify-between"
         >
           <div>
-            <p class="text-xl text-white font-bold mb-4">Monthly Target</p>
+            <p class="text-xl text-black font-bold mb-4">Monthly Target</p>
             <p class="text-white font-semibold">50% achieved</p>
           </div>
           <hr class="h-20 w-0.5 bg-[#F6F6FC]" />
