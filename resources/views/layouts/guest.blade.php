@@ -293,7 +293,7 @@
           </div>
           <div class="hidden xl:flex items-center mr-36">
             <div class="relative md:mr-6 my-2">
-              <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:text-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-5 py-2 text-xs">Manage</button>
+              <button class="focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:text-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-5 py-2 text-xs">Manage</button>
             </div>
 
           </div>
@@ -894,6 +894,7 @@
               <span class="flex items-center text-base bg-indigo-300 border-b-4 border-indigo-400 p-2 rounded-md font-semibold text-gray-100 ml-3"
                 ><span><img src="/img/2859734.png" alt="" srcset="" width="30px"></span><span class="pl-2"> Start a Thread</span></span
               >
+              
             </a>
           </li>
           <li class="mb-10">
@@ -1129,6 +1130,14 @@
             <circle cx="12" cy="12" r="11.5" stroke="#A0A0A0" />
           </svg>
         </div>
+
+        <div class="mb-10">
+            <a class="flex items-center" href="#">       
+              <span class="flex items-center text-sm font-bold underline px-2 py-1 rounded-lg text-gray-500"
+                ><span><img src="/img/560919.png" alt="" srcset="" width="25px"></span><span class="ml-1">Help Us Grow, Donate!</span></span
+              >
+            </a>
+  </div>
       </div>
       <button class="flex items-center">
         <svg
@@ -1207,6 +1216,25 @@
           </div>
         </div> -->
 
+
+<div id="container-floating" class="z-50">
+  <div class="nd4 nds"><img class="reminder">
+    <p class="bg-blue-500 border-b-4 border-blue-600 letter rounded-full"><i class="fa fa-facebook"></i></p>
+  </div>
+  
+  <div class="nd3 nds">
+  <p class="bg-blue-400 border-b-4 border-indigo-500 letter rounded-full"><i class="fa fa-twitter"></i></p>
+  </div>
+  
+  <div class="nd1 nds">
+  <p class="bg-red-400 border-b-4 border-red-500 letter rounded-full"><i class="fa fa-youtube"></i></p>
+  </div>
+
+  <div id="floating-button">
+    <p class="plus"><img src="/img/2374633.png" alt="" srcset="" width="60px"></p>
+    <img class="edit" src="/img/2374633.png">
+  </div>
+</div>
 
 
 
@@ -1969,7 +1997,7 @@
         </div>
       </div>
     </section>
-    <section class="hidden px-5 py-9 xl:flex xl:flex-col xl:w-3/12">
+    <section class="hidden ml-5 px-5 py-9 xl:flex xl:flex-col xl:w-2/12">
       <div class="flex justify-between items-center mb-16">
         <div>
           <p class="text-lg font-bold text-gray-700">Hi, there</p>
@@ -2153,9 +2181,6 @@
 
 
 
-
-
-sc
 
 </body>
 
