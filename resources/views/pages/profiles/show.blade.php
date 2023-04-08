@@ -62,7 +62,7 @@
             </span>
 
             @foreach($user->latestThreads() as $thread)
-            <article class="p-5 side-bg shadow">
+            <article class="p-5 side-bg shadow border-b-4 border-gray-300 rounded-md">
                 <div class="relative grid grid-cols-8">
                     {{-- Thread --}}
                     <div class="relative col-span-7 space-y-6">

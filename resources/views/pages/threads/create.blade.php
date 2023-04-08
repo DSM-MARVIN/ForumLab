@@ -5,7 +5,7 @@
         <section class="flex flex-col col-span-3 gap-y-4">
             <!-- <small class="text-sm text-gray-400">discussion>create</small> -->
 
-            <article class="p-5 side-bg shadow">
+            <article class="p-5 side-bg shadow border-b-4 border-gray-300 rounded-md">
                 <div class="w-full">
 
                     {{-- Create --}}

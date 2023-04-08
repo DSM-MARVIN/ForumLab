@@ -9,7 +9,7 @@
 
             <!-- <small class="text-sm text-gray-400">Threads>{{ $category->name() }}>{{ $thread->title() }}</small> -->
 
-            <article class="p-5 side-bg shadow">
+            <article class="p-5 side-bg shadow border-b-4 border-gray-300 rounded-md">
             <x-partials.sidenav :thread="$thread" />
             {{-- Avatar --}}
                     <div class="col-span-1" class="user-img">
@@ -19,19 +19,17 @@
 
                     {{-- Thread --}}
                     <div class="relative col-span-7 space-y-4">
-                        <div class="space-y-3">
+                        <div class=" flex flex-col space-y-3">
                             <h2 class="text-md tracking-wide hover:text-blue-400">
                                 {{ $thread->title() }}
                             </h2>
                             <div class="text-gray-500">
                                 {!! $thread->body() !!}
                             </div>  
-                            <a href="/storage/{{$thread->image}}">
+                            <a class="" href="/storage/{{$thread->image}}">
                             <img src="/storage/{{$thread->image}}" alt="" srcset="">
                             </a>
-                            <div id="image-viewer">
-                            <img class="modal-content" id="full-image">
-                            </div>
+                          
                         </div>
 
                         <div class="flex justify-between">

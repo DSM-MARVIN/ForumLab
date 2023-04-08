@@ -1,4 +1,4 @@
-<article class="p-5 shadow article-bg relative card-thread" >
+<article class="p-5 shadow article-bg relative card-thread border-b-4 border-gray-200 rounded-md " >
 
     <div class="relative grid grid-cols-6 gap-2">
 
@@ -27,7 +27,7 @@
 
                 {{-- Likes Count --}}
                 <div class="flex items-center space-x-2">
-                    <x-heroicon-o-heart class="w-5 h-5 text-blue-400" />
+                    <x-heroicon-o-heart class="w-6 h-6 text-blue-400 border-2 border-gray-200 rounded-lg " />
                     <!-- <i class="fa fa-heart text-blue-500"></i> -->
                     <span class="text-xs text-gray-500">{{ count($thread->likes()) }}</span>
                 </div>
@@ -58,7 +58,7 @@
                 {{-- Tags --}}
         <div class="lex items-center space-x-2">
             <div class="flex space-x-2">
-                <div class="p-1 text-xs text-white bg-green-500" style="border-radius: 20px;">
+                <div class="p-1 text-xs text-white bg-gray-300 rounded-md">
                 {{$thread->category->name()}}
 
                 </div>

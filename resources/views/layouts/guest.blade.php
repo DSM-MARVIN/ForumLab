@@ -25,6 +25,94 @@
   padding: 0 4px;
 }
 
+.calendar {
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 3px #dadada;
+}
+
+.calendar .calendar-dates,
+.calendar .calendar-day-name {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 8px;
+}
+
+.calendar .calendar-dates-day {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  border: 1px solid #efefef;
+  padding: 4px;
+  box-sizing: border-box;
+  background: #f8f8f8;
+  border-radius: 4px;
+  color: #333;
+}
+
+.calendar .calendar-dates-day-empty {
+  background: none;
+  border: 0;
+  color: #dcdcdc;
+  min-height: 28px;
+}
+
+.calendar .calendar-day-name div {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.calendar .calendar-title {
+  padding-bottom: 16px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.calendar .calendar-dates-day.today-date {
+  background: #555;
+  color: #fff;
+}
+
+.calendar #prevMonth,
+.calendar #nextMonth,
+.calendar #today {
+  padding: 2px 6px;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+}
+
+.calendar #today {
+  font-size: 13px;
+}
+
+.calendar .calendar-title-text {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.calendar .calendar-button-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 </style>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -57,37 +145,286 @@
     <header>
      <nav
         class="
-          flex flex-wrap
-          items-center
-          justify-between
-          w-full
-          py-4
-          md:py-0
-          px-4
-          text-lg text-gray-700
-          bg-white
-          h-20
+         
+         mb-4
         "
       >
-       <div class="absolute top-6 left-7">
-          <a href="/">
-            <img src="/img/6230173.png" alt="" srcset="" width="50px">
+      
+      <div class="w-full z-index-1">
+  <!-- Code block starts -->
+  <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+  <nav role="navigation" class="bg-white shadow lg:block hidden">
+    <div class=" px-6 py-2 md:py-0">
+      <div class="flex items-center justify-between">
+        <div class="inset-y-0 left-0 flex items-center lg:hidden">
+          <div class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
+            <div class="visible xl:hidden">
+              <ul class="p-2 border-r bg-white absolute rounded left-0 right-0 shadow mt-8 md:mt-8 hidden">
+                <li class="flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z"></path>
+                      <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                      <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                      <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                      <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                    </svg>
+                    <span class="ml-2 font-bold">Dashboard</span>
+                  </div>
+                </li>
+                <li class="flex xl:hidden flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center" onclick="dropdownHandler(this)">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z"></path>
+                      <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                    </svg>
+                    <span class="ml-2 font-bold">Products</span>
+                  </div>
+                </li>
+                <li class="flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z"></path>
+                    <polyline points="8 16 10 10 16 8 14 14 8 16"></polyline>
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <span class="ml-2 font-bold">Performance</span>
+                </li>
+                <li class="border-b border-gray-300 flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z"></path>
+                    <polyline points="7 8 3 12 7 16"></polyline>
+                    <polyline points="17 8 21 12 17 16"></polyline>
+                    <line x1="14" y1="4" x2="10" y2="20"></line>
+                  </svg>
+                  <span class="ml-2 font-bold">Deliverables</span>
+                </li>
+                <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                  <div class="flex items-center">
+                    <div class="w-12 cursor-pointer flex text-sm border-2 border-transparent rounded focus:outline-none focus:border-white transition duration-150 ease-in-out">
+                      <img class="rounded h-10 w-10 object-cover" src="https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_1.png" alt="logo" />
+                    </div>
+                    <p class="text-sm ml-2 cursor-pointer">Jane Doe</p>
+                    <div class="sm:ml-2 text-white relative">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </li>
+                <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <circle cx="12" cy="7" r="4" />
+                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <span class="ml-2">Profile</span>
+                  </div>
+                </li>
+              </ul>
+              <svg onclick="MenuHandler(this,true)" aria-haspopup="true" aria-label="Main Menu" xmlns="http://www.w3.org/2000/svg" class="show-m-menu icon icon-tabler icon-tabler-menu" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z"></path>
+                <line x1="4" y1="8" x2="20" y2="8"></line>
+                <line x1="4" y1="16" x2="20" y2="16"></line>
+              </svg>
+            </div>
+            <div class="hidden close-m-menu text-gray-700" onclick="MenuHandler(this,false)">
+              <svg aria-label="Close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+          </div>
         </div>
+        <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md flex w-full sm:w-auto items-center sm:items-stretch justify-end sm:justify-start">
+          <div class="flex items-center">
+            <svg id="logo" enable-background="new 0 0 300 300" height="44" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <img src="/img/2215517.png" alt="" srcset="" width="50">
+            </svg>
+            <h2 class="hidden sm:block text-lg text-gray-900 font-bold leading-normal px-1">Pluto</h2>
+          </div>
+        </button>
+        <div class="flex">
+          <div class="hidden md:flex md:mr-24 xl:mr-16">
+            <a href="javascript: void(0)" class="focus:text-indigo-700 border-b-2 border-transparent focus:border-indigo-700 flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+              <span class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z"></path>
+                  <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                  <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                  <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                  <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                </svg>
+              </span>
+              Dashboar
+            </a>
+            <a href="javascript: void(0)" class="focus:text-indigo-700 border-b-2 border-transparent focus:border-indigo-700 flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+              <span class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z"></path>
+                  <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                </svg>
+              </span>
+              Products
+            </a>
+            <a href="javascript: void(0)" class="focus:text-indigo-700 border-b-2 border-transparent focus:border-indigo-700 flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+              <span class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z"></path>
+                  <polyline points="8 16 10 10 16 8 14 14 8 16"></polyline>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              Performance
+            </a>
+            <a href="javascript: void(0)" class="focus:text-indigo-700 border-b-2 border-transparent focus:border-indigo-700 flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+              <span class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z"></path>
+                  <polyline points="7 8 3 12 7 16"></polyline>
+                  <polyline points="17 8 21 12 17 16"></polyline>
+                  <line x1="14" y1="4" x2="10" y2="20"></line>
+                </svg>
+              </span>
+              Deliverables
+            </a>
+          </div>
+          <div class="hidden xl:flex items-center mr-36">
+            <div class="relative md:mr-6 my-2">
+              <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:text-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-5 py-2 text-xs">Manage</button>
+            </div>
 
-        </a>
-       
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav>
+    <div class="py-4 px-6 w-full flex lg:hidden justify-between items-center bg-white fixed top-0 z-40 ">
+      <div aria-label="logo" role="img" tabindex="0" class="focus:outline-none w-24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="43" height="44" viewBox="0 0 43 44" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M37.8735 0C36.1688 0 34.7818 1.37956 34.7818 3.0751C34.7818 4.77063 36.1688 6.15019 37.8735 6.15019C39.5782 6.15019 40.9653 4.77063 40.9653 3.0751C40.9653 1.37956 39.5782 0 37.8735 0ZM37.8735 4.61264C37.021 4.61264 36.3277 3.92305 36.3277 3.0751C36.3277 2.22714 37.021 1.53755 37.8735 1.53755C38.7261 1.53755 39.4194 2.22714 39.4194 3.0751C39.4194 3.92305 38.7261 4.61264 37.8735 4.61264ZM26.6663 1.0513C26.1828 1.0513 25.7909 1.44107 25.7909 1.92193C25.7909 2.4028 26.1828 2.79238 26.6663 2.79238C27.1497 2.79238 27.5416 2.40261 27.5416 1.92193C27.5416 1.44107 27.1497 1.0513 26.6663 1.0513ZM43 13.4535C43 13.9342 42.6081 14.324 42.1247 14.324C41.6412 14.324 41.2493 13.9342 41.2493 13.4535C41.2493 12.9727 41.6412 12.5829 42.1247 12.5829C42.6081 12.5829 43 12.9729 43 13.4535ZM18.1654 2.59019L35.1698 12.4044C35.4079 12.5418 35.5548 12.7951 35.5548 13.0692V33.0573C35.5548 33.3273 35.4123 33.5772 35.1803 33.7161L18.1758 43.8901C18.0533 43.9633 17.915 44 17.7774 44C17.6398 44 17.5016 43.9633 17.3789 43.8901L0.374484 33.7161C0.142219 33.5772 0 33.3271 0 33.0573V13.0692C0 12.7951 0.146857 12.5418 0.384919 12.4044L17.3894 2.59019C17.6296 2.45124 17.9254 2.45124 18.1654 2.59019ZM17.7774 4.14388L33.2524 13.0751L23.0207 19.0887L18.5503 16.4735V12.3004C18.5503 11.8758 18.2042 11.5316 17.7774 11.5316C17.3505 11.5316 17.0044 11.8758 17.0044 12.3004V16.4735L11.9752 19.4158C11.7389 19.554 11.5939 19.8057 11.5939 20.0783V25.8047L1.54586 31.7102V13.5118L17.7774 4.14388ZM2.28227 33.0632L17.7774 42.3341L34.0091 32.6225V14.4162L23.961 20.322V26.4081C23.961 26.6807 23.8161 26.9325 23.5798 27.0706L18.5505 30.0125V33.826C18.5505 34.2506 18.2044 34.5948 17.7776 34.5948C17.3507 34.5948 17.0046 34.2506 17.0046 33.826V30.0125L12.2274 27.2182L2.28227 33.0632Z" fill="#667EEA" />
+        </svg>
+      </div>
+      <div class="flex items-center">
+        <div class="relative mr-6">
+          <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-5 py-2 text-xs">Manage</button>
+        </div>
+        <button id="menu" aria-label="open menu" class="focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-md text-gray-800" onclick="sidebarHandler(true)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!--Mobile responsive sidebar-->
+    <div class=" w-full h-full transform z-40 fixed -mt-20 -translate-x-full z-40 lg:hidden" id="mobile-nav">
+      <div class="bg-gray-800 z-40 fixed opacity-50 w-full h-full" onclick="sidebarHandler(false)"></div>
+      <div class="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
+        <div class="px-6 h-full">
+          <div class="flex flex-col justify-between h-full w-full">
+            <div>
+              <div class="mt-6 flex w-full items-center justify-between">
+                <div class="flex items-center justify-between w-full">
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="44" viewBox="0 0 43 44" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M37.8735 0C36.1688 0 34.7818 1.37956 34.7818 3.0751C34.7818 4.77063 36.1688 6.15019 37.8735 6.15019C39.5782 6.15019 40.9653 4.77063 40.9653 3.0751C40.9653 1.37956 39.5782 0 37.8735 0ZM37.8735 4.61264C37.021 4.61264 36.3277 3.92305 36.3277 3.0751C36.3277 2.22714 37.021 1.53755 37.8735 1.53755C38.7261 1.53755 39.4194 2.22714 39.4194 3.0751C39.4194 3.92305 38.7261 4.61264 37.8735 4.61264ZM26.6663 1.0513C26.1828 1.0513 25.7909 1.44107 25.7909 1.92193C25.7909 2.4028 26.1828 2.79238 26.6663 2.79238C27.1497 2.79238 27.5416 2.40261 27.5416 1.92193C27.5416 1.44107 27.1497 1.0513 26.6663 1.0513ZM43 13.4535C43 13.9342 42.6081 14.324 42.1247 14.324C41.6412 14.324 41.2493 13.9342 41.2493 13.4535C41.2493 12.9727 41.6412 12.5829 42.1247 12.5829C42.6081 12.5829 43 12.9729 43 13.4535ZM18.1654 2.59019L35.1698 12.4044C35.4079 12.5418 35.5548 12.7951 35.5548 13.0692V33.0573C35.5548 33.3273 35.4123 33.5772 35.1803 33.7161L18.1758 43.8901C18.0533 43.9633 17.915 44 17.7774 44C17.6398 44 17.5016 43.9633 17.3789 43.8901L0.374484 33.7161C0.142219 33.5772 0 33.3271 0 33.0573V13.0692C0 12.7951 0.146857 12.5418 0.384919 12.4044L17.3894 2.59019C17.6296 2.45124 17.9254 2.45124 18.1654 2.59019ZM17.7774 4.14388L33.2524 13.0751L23.0207 19.0887L18.5503 16.4735V12.3004C18.5503 11.8758 18.2042 11.5316 17.7774 11.5316C17.3505 11.5316 17.0044 11.8758 17.0044 12.3004V16.4735L11.9752 19.4158C11.7389 19.554 11.5939 19.8057 11.5939 20.0783V25.8047L1.54586 31.7102V13.5118L17.7774 4.14388ZM2.28227 33.0632L17.7774 42.3341L34.0091 32.6225V14.4162L23.961 20.322V26.4081C23.961 26.6807 23.8161 26.9325 23.5798 27.0706L18.5505 30.0125V33.826C18.5505 34.2506 18.2044 34.5948 17.7776 34.5948C17.3507 34.5948 17.0046 34.2506 17.0046 33.826V30.0125L12.2274 27.2182L2.28227 33.0632Z" fill="#667EEA"></path>
+                    </svg>
+                    <!-- <p tabindex="0" class="focus:outline-none text-base md:text-2xl text-gray-800 ml-3">The North</p> -->
+                  </div>
+                  <button id="cross" aria-label="close menu" class="focus:outline-none focus:ring-2 rounded-md text-gray-800" onclick="sidebarHandler(false)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z"></path>
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul class="f-m-m">
+                <li>
+                  <a class="cursor-pointer">
+                    <div class="text-gray-800 pt-10">
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 md:w-8 md:h-8 text-indigo-700">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                            <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                            <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                            <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                            <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                          </svg>
+                        </div>
+                        <p tabindex="0" class="focus:outline-none focus:text-indigo-600 text-indigo-700 xl:text-base text-base ml-3">Dashboard</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="cursor-pointer">
+                    <div class="text-gray-800 pt-8">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                          <div class="w-6 h-6 md:w-8 md:h-8 text-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z"></path>
+                              <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                            </svg>
+                          </div>
+                          <p tabindex="0" class="focus:outline-none focus:text-indigo-600 text-gray-800 xl:text-base md:text-base text-base ml-3">Products</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="cursor-pointer">
+                    <div class="text-gray-800 pt-8">
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 md:w-8 md:h-8 text-gray-800">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                            <polyline points="8 16 10 10 16 8 14 14 8 16"></polyline>
+                            <circle cx="12" cy="12" r="9"></circle>
+                          </svg>
+                        </div>
+                        <p tabindex="0" class="focus:outline-none focus:text-indigo-600 text-gray-800 xl:text-base md:text-base text-base ml-3">Performance</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="text-gray-800 pt-8 cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <div class="w-6 h-6 md:w-8 md:h-8 text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z"></path>
+                          <polyline points="7 8 3 12 7 16"></polyline>
+                          <polyline points="17 8 21 12 17 16"></polyline>
+                          <line x1="14" y1="4" x2="10" y2="20"></line>
+                        </svg>
+                      </div>
+                      <p tabindex="0" class="focus:outline-none focus:text-indigo-600 text-gray-800 xl:text-base md:text-base text-base ml-3">Deliverables</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
 
 
-       
-          <nav x-data="{ open: false }" class="bg-white absolute top-2 right-2">
+
+            <nav x-data="{ open: false }" class="bg-white absolute top-2 right-7">
     <!-- Primary Navigation Menu -->
-    <div class="mt-3 z-index-1  lg:px-8 bg-white">
+    <div class="mt-3 bg-none">
         <div class=" ">
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-            <div class="md:p-4 py-2 block text-sm">
-         WELCOME {{auth()->user()->name}}
-          </div>
+         
                 <!-- Settings Dropdown -->
                 @auth
                 <div class="relative ml-3">
@@ -95,7 +432,7 @@
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <img class="object-cover border w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 <x-heroicon-o-chevron-down class="w-5 h-5 text-gray-400" />
                             </button>
                             @else
@@ -211,12 +548,232 @@
             @else
             <div class="mt-3 space-y-1">
 
-                <!-- Login -->
+               <!-- Login -->
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                     {{ __('Login') }}
                 </x-jet-responsive-nav-link>
 
-                <!-- Registration -->
+          
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-jet-responsive-nav-link>
+
+            </div>
+        </div>
+        @endauth
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+     
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    function dropdownHandler(element) {
+      let single = element.getElementsByTagName("ul")[0];
+      single.classList.toggle("hidden");
+    }
+
+    function MenuHandler(el, val) {
+      let MainList = el.parentElement.parentElement.getElementsByTagName("ul")[0];
+      let closeIcon = el.parentElement.parentElement.getElementsByClassName("close-m-menu")[0];
+      let showIcon = el.parentElement.parentElement.getElementsByClassName("show-m-menu")[0];
+      if (val) {
+        MainList.classList.remove("hidden");
+        el.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+      } else {
+        showIcon.classList.remove("hidden");
+        MainList.classList.add("hidden");
+        el.classList.add("hidden");
+      }
+    }
+    // ------------------------------------------------------
+    let sideBar = document.getElementById("mobile-nav");
+    let menu = document.getElementById("menu");
+    let cross = document.getElementById("cross");
+    const sidebarHandler = (check) => {
+      if (check) {
+        sideBar.style.transform = "translateX(0px)";
+        menu.classList.add("hidden");
+        cross.classList.remove("hidden");
+      } else {
+        sideBar.style.transform = "translateX(-100%)";
+        menu.classList.remove("hidden");
+        cross.classList.add("hidden");
+      }
+    };
+    let list = document.getElementById("list");
+    let chevrondown = document.getElementById("chevrondown");
+    let chevronup = document.getElementById("chevronup");
+    const listHandler = (check) => {
+      if (check) {
+        list.classList.remove("hidden");
+        chevrondown.classList.remove("hidden");
+        chevronup.classList.add("hidden");
+      } else {
+        list.classList.add("hidden");
+        chevrondown.classList.add("hidden");
+        chevronup.classList.remove("hidden");
+      }
+    };
+  </script>
+
+  <!-- Code block ends -->
+</div>
+
+
+
+       
+          <nav x-data="{ open: false }" class="bg-white absolute top-2 right-7 pb-2">
+    <!-- Primary Navigation Menu -->
+    <div class="mt-3 bg-none">
+        <div class=" ">
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+         
+                <!-- Settings Dropdown -->
+                @auth
+                <div class="relative ml-3">
+                    <x-jet-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <button class="flex items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                <img class="object-cover border w-9 h-9 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <x-heroicon-o-chevron-down class="w-5 h-5 text-gray-400" />
+                            </button>
+                            @else
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                    {{ Auth::user()->name }}
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </span>
+                            @endif
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <!-- Account Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Account') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-jet-dropdown-link>
+
+                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                {{ __('API Tokens') }}
+                            </x-jet-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-gray-100"></div>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-jet-dropdown>
+                </div>
+                @else
+                <div class="space-x-4">
+                    <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-jet-nav-link>
+                </div>
+
+                @endauth
+            </div>
+
+            <!-- Hamburger -->
+            <div class="flex items-center -mr-2 sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 border hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+        </div>
+
+        @auth
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-gray-200">
+            <div class="flex items-center px-4">
+                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                <div class="flex-shrink-0 mr-3">
+                    <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                </div>
+                @endif
+
+                <div>
+                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
+            </div>
+
+            <div class="mt-3 space-y-1">
+                <!-- Account Management -->
+                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                    {{ __('Profile') }}
+                </x-jet-responsive-nav-link>
+
+
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-jet-responsive-nav-link>
+                </form>
+
+            </div>
+            @else
+            <div class="mt-3 space-y-1">
+
+               <!-- Login -->
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-jet-responsive-nav-link>
+
+          
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
                     {{ __('Register') }}
                 </x-jet-responsive-nav-link>
@@ -237,92 +794,22 @@
     {{-- Livewire --}}
     <livewire:scripts />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row">
+<div class="flex flex-row mt-20 lg:mt-0">
     <nav
       class="md:w-1/3 left-side px-8 py-9 flex-col justify-between hidden md:flex md:py-8 md:px-7 xl:w-2/12"
     >
       <div>
         <div class="flex items-center mb-20">
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="mr-2.5"
-          >
-            <mask
-              id="mask0_0_125"
-              style="mask-type: alpha"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="48"
-              height="48"
-            >
-              <rect width="48" height="48" rx="10" fill="#4F46BA" />
-            </mask>
-            <g mask="url(#mask0_0_125)">
-              <rect width="48" height="48" rx="10" fill="#4F46BA" />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M108.434 -33.1587C120.319 -29.2511 124.061 -12.7131 124.396 -0.160654C124.69 10.8456 114.519 18.6792 110.089 28.7813C106.541 36.8718 106.511 46.0432 101.078 53.0108C94.4594 61.4989 86.612 69.7643 76.1759 72.2713C64.6677 75.0359 51.359 74.3711 41.9872 67.2061C32.7788 60.1659 33.8443 46.3294 28.6591 35.943C22.5166 23.6392 7.99586 14.6677 8.88599 0.901685C9.79939 -13.2242 19.5031 -28.9184 33.1033 -32.7878C47.0862 -36.766 58.0304 -17.1379 72.544 -17.2093C85.9304 -17.2752 95.7363 -37.3337 108.434 -33.1587Z"
-                fill="#FDBC64"
-              />
-            </g>
-          </svg>
+        <img src="/img/cute-astronaut.jpg" alt="" srcset="" width="60px" class="rounded-lg mr-2">
           <div>
             <p class="text-base font-bold text-gray-500">Redwhale</p>
-            <p class="text-xs font-bold text-slate-400">Growth & Marketing</p>
+            <p class="text-xs font-bold text-slate-400">Everything Math</p>
           </div>
         </div>
         <ul>
-          <li class="mb-10">
-            <a class="flex items-center" href="/threads">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.07874 16.1354H14.8937"
-                  stroke="black"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M2.40002 13.713C2.40002 8.082 3.01402 8.475 6.31902 5.41C7.76502 4.246 10.015 2 11.958 2C13.9 2 16.195 4.235 17.654 5.41C20.959 8.475 21.572 8.082 21.572 13.713C21.572 22 19.613 22 11.986 22C4.35903 22 2.40002 22 2.40002 13.713Z"
-                  stroke="black"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span class="text-base font-semibold ml-3">Dashboard</span>
-            </a>
-          </li>
-          <li class="mb-10">
+        <li class="mb-10">
             <a class="flex items-center" href="{{ route('threads.create') }}">
-              <svg
+              <!-- <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -403,17 +890,49 @@
                     stroke-linejoin="round"
                   />
                 </g>
-              </svg>
-              <span class="text-base font-semibold text-zinc-500 ml-3"
-                >Start a Thread</span
+              </svg> -->
+              <span class="flex items-center text-base bg-indigo-300 border-b-4 border-indigo-400 p-2 rounded-md font-semibold text-gray-100 ml-3"
+                ><span><img src="/img/2859734.png" alt="" srcset="" width="30px"></span><span class="pl-2"> Start a Thread</span></span
               >
             </a>
           </li>
+          <li class="mb-10">
+            <a class="flex items-center" href="/threads">
+              <svg
+              class="border-2 border-gray-200 p-1 rounded-lg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.07874 16.1354H14.8937"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.40002 13.713C2.40002 8.082 3.01402 8.475 6.31902 5.41C7.76502 4.246 10.015 2 11.958 2C13.9 2 16.195 4.235 17.654 5.41C20.959 8.475 21.572 8.082 21.572 13.713C21.572 22 19.613 22 11.986 22C4.35903 22 2.40002 22 2.40002 13.713Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="text-base font-semibold ml-3">Feed Dashboard</span>
+            </a>
+          </li>
+
           <li class="mb-16">
             <a class="flex items-center">
               <svg
-                width="24"
-                height="24"
+              class="border-2 border-gray-200 p-1 rounded-lg"
+                width="30"
+                height="30"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -628,47 +1147,11 @@
       </button>
     </nav>
     <section
-      class="w-full p-4 bg-gray-50 md:w-2/3 md:p-8 md:min-content xl:w-7/12"
+      class="w-full p-4 bg-gray-50 md:w-9/12 md:p-8 md:min-content  xl:w-7/12"
     >
-      <div
-        class="w-full flex justify-between items-start mb-8 space-x-3 overflow-x-scroll stories md:w-auto"
-      >
-        <div class="flex flex-col items-center">
-          <div
-            class="w-14 h-14 block border-2 rounded-full mb-2 border-transparent relative"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1579105728744-9d6b14a45389?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=683&q=80"
-              alt="Omid Armin"
-              class="w-full h-full object-cover rounded-full"
-            />
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="absolute bottom-0 right-1"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M8.125 16C12.4742 16 16 12.4742 16 8.125C16 3.77576 12.4742 0.25 8.125 0.25C3.77576 0.25 0.25 3.77576 0.25 8.125C0.25 12.4742 3.77576 16 8.125 16Z"
-                fill="#4F46BA"
-              />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M8.61719 4.67969C8.61719 4.40786 8.39683 4.1875 8.125 4.1875C7.85317 4.1875 7.63281 4.40786 7.63281 4.67969V7.63281H4.67969C4.40786 7.63281 4.1875 7.85317 4.1875 8.125C4.1875 8.39683 4.40786 8.61719 4.67969 8.61719H7.63281V11.5703C7.63281 11.8421 7.85317 12.0625 8.125 12.0625C8.39683 12.0625 8.61719 11.8421 8.61719 11.5703V8.61719H11.5703C11.8421 8.61719 12.0625 8.39683 12.0625 8.125C12.0625 7.85317 11.8421 7.63281 11.5703 7.63281H8.61719V4.67969Z"
-                fill="#FDBC64"
-              />
-            </svg>
-          </div>
-          <p class="text-xs text-zinc-500 font-semibold">Add to</p>
-        </div>
-      </div>
-      <h2 class="text-base font-bold">30 Days Performance</h2>
-      <div
+     
+      <!-- <h2 class="text-base font-bold">30 Days Performance</h2> -->
+      <!-- <div
         class="flex justify-between mt-4 space-y-3 mb-8 flex-col md:flex-row md:space-x-4 md:space-y-0 md:mb-14"
       >
         <div class="p-5 bg-indigo-600 rounded-xl w-full views text-gray-300">
@@ -683,7 +1166,46 @@
           <p class="text-base font-bold text-white opacity-30">LIKES</p>
           <p class="text-base font-semibold text-white">125,685</p>
         </div>
-      </div>
+      </div> -->
+
+              <!-- Statistics Cards -->
+              <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
+          <div class="bg-blue-300 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-400 dark:border-gray-600 text-white font-medium group">
+            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+            </div>
+            <div class="text-right">
+              <p class="text-lg xl:text-2xl">257</p>
+              <p>Visitors</p>
+            </div>
+          </div>
+          <div class="bg-blue-300 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-400 dark:border-gray-600 text-white font-medium group">
+            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+              <img src="/img/illus/3300714.png" alt="" srcset="" width="35px">
+            </div>
+            <div class="text-right">
+              <p class="text-lg xl:text-2xl">557</p>
+              <p>Orders</p>
+            </div>
+          </div>
+          <div class="bg-blue-300 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-400 dark:border-gray-600 text-white font-medium group">
+            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+              <img src="/img/illus/3300778.png" alt="" srcset="" width="35px">
+            </div>
+            <div class="text-right">
+              <p class="text-lg xl:text-2xl">434</p>
+              <p>Sales</p>
+            </div>
+          </div>
+          <div class=" bg-blue-300 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-400 dark:border-gray-600 text-white font-medium group">
+            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+          <img src="/img/illus/7148579.png" alt="" srcset="" width="40px">
+            </div>
+            <div class="text-right">
+              <p class="text-lg xl:text-2xl">757</p>
+              <p>Balances</p>
+            </div>
+          </div>
+        </div> -->
 
 
 
@@ -1450,8 +1972,8 @@
     <section class="hidden px-5 py-9 xl:flex xl:flex-col xl:w-3/12">
       <div class="flex justify-between items-center mb-16">
         <div>
-          <p class="text-lg font-bold text-gray-900">Hi, Omid</p>
-          <p class="text-sm text-zinc-500 font-semibold">Good morning!</p>
+          <p class="text-lg font-bold text-gray-700">Hi, there</p>
+          <p class="text-sm text-gray-600 font-semibold">Let us be amazing!</p>
         </div>
         <div>
           <button class="border-2 border-gray-200 rounded-xl p-2.5 btn-shadow">
@@ -1541,185 +2063,81 @@
           </button>
         </div>
       </div>
-      <div class="flex flex-col items-center mt-3.5">
-        <div class="avatar relative mb-6">
-          <img
-            src="https://images.unsplash.com/photo-1579105728744-9d6b14a45389?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=683&q=80"
-            alt="Omid Armin"
-            class="w-14 h-14 object-cover rounded-lg blur-3xl absolute inset-x-0 bottom-0 -z-10"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1579105728744-9d6b14a45389?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=683&q=80"
-            alt="Omid Armin"
-            class="w-24 h-24 object-cover rounded-lg"
-          />
-        </div>
-        <p class="mt-1.5 font-bold text-lg text-[#11243D] mb-3">Omid Armin</p>
-        <p class="text-xs font-semibold text-zinc-500 mb-6">
-          UI/UX Designer @Redwhale
-        </p>
-        <div class="mt-0.5 w-full flex justify-evenly items-center mb-6">
-          <div class="flex flex-col items-center">
-            <p class="text-base text-[#11243D] font-bold">786K</p>
-            <p class="text-zinc-500 font-semibold text-sm">Followers</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <p class="text-base text-[#11243D] font-bold">298</p>
-            <p class="text-zinc-500 font-semibold text-sm">Following</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <p class="text-base text-[#11243D] font-bold">438</p>
-            <p class="text-zinc-500 font-semibold text-sm">Posts</p>
-          </div>
-        </div>
-        <div class="flex mt-0.5 w-full justify-evenly items-center mb-8">
-          <button
-            class="bg-[#4F46BA] py-4 px-7 rounded-xl text-white font-semibold"
-          >
-            View Profile
-          </button>
-          <button
-            class="border-2 border-gray-200 rounded-xl py-4 px-7 text-[#11243D] font-semibold"
-          >
-            Edit Profile
-          </button>
-        </div>
-        <div
-          class="flex w-full mt-0.5 justify-evenly items-center mb-8 space-x-4"
-        >
-          <div
-            class="bg-[#4F46BA]-350 pb-8 pl-4 pr-4 pt-16 rounded-xl relative w-1/2 h-48"
-          >
-            <svg
-              width="42"
-              height="42"
-              viewBox="0 0 42 42"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="mb-5"
-            >
-              <path
-                d="M28.265 16.9273C31.4817 14.3773 35.7983 11.9107 36.615 12.794C37.965 14.244 37.8483 28.044 36.615 29.3607C35.865 30.1773 31.515 27.7107 28.265 25.1773"
-                stroke="#51459E"
-                stroke-width="2.625"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M4.40015 21.0647C4.40015 11.978 7.41848 8.94967 16.4768 8.94967C25.5335 8.94967 28.5518 11.978 28.5518 21.0647C28.5518 30.1497 25.5335 33.1797 16.4768 33.1797C7.41848 33.1797 4.40015 30.1497 4.40015 21.0647Z"
-                stroke="#51459E"
-                stroke-width="2.625"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <p class="text-2xl font-bold text-[#4F46BA]">Videos</p>
-            <p class="text-sm font-bold text-[#4F46BA]">Click To Add Video</p>
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="absolute right-2 top-3"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M9.48291 8.96955L12.0476 6.41047C12.2815 6.17656 12.2815 5.79731 12.0476 5.5634C11.8137 5.32949 11.4345 5.32949 11.2007 5.5634L8.64193 8.12845L6.08321 5.5634C5.84934 5.32949 5.47015 5.32949 5.23627 5.5634C5.00239 5.79731 5.00239 6.17656 5.23627 6.41047L7.80096 8.96955L5.23627 11.5286C5.12336 11.6406 5.05984 11.7931 5.05984 11.9522C5.05984 12.1112 5.12336 12.2637 5.23627 12.3757C5.34826 12.4886 5.50071 12.5522 5.65974 12.5522C5.81877 12.5522 5.97122 12.4886 6.08321 12.3757L8.64193 9.81065L11.2007 12.3757C11.3126 12.4886 11.4651 12.5522 11.6241 12.5522C11.7832 12.5522 11.9356 12.4886 12.0476 12.3757C12.1605 12.2637 12.224 12.1112 12.224 11.9522C12.224 11.7931 12.1605 11.6406 12.0476 11.5286L9.48291 8.96955Z"
-                fill="#11243D"
-              />
-            </svg>
-          </div>
-          <div
-            class="bg-[#FEF3F0] pb-8 pl-4 pr-4 pt-16 rounded-xl relative w-1/2 h-48"
-          >
-            <svg
-              width="42"
-              height="42"
-              viewBox="0 0 42 42"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="mb-5"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M27.0167 21.8717C27.0167 18.8322 24.552 16.3675 21.5125 16.3675C18.473 16.3675 16.0083 18.8322 16.0083 21.8717C16.0083 24.9112 18.473 27.3759 21.5125 27.3759C24.552 27.3759 27.0167 24.9112 27.0167 21.8717Z"
-                stroke="#AC6755"
-                stroke-width="2.625"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M21.5119 35.3502C35.5911 35.3502 37.2675 31.1318 37.2675 21.9912C37.2675 15.5844 36.4201 12.1562 31.0835 10.6826C30.5935 10.5278 30.0501 10.2331 29.6098 9.7486C28.8988 8.96939 28.3793 6.5765 26.6625 5.85255C24.9456 5.13045 18.0506 5.1636 16.3614 5.85255C14.674 6.54334 14.1251 8.96939 13.414 9.7486C12.9738 10.2331 12.4322 10.5278 11.9404 10.6826C6.60378 12.1562 5.75641 15.5844 5.75641 21.9912C5.75641 31.1318 7.43272 35.3502 21.5119 35.3502Z"
-                stroke="#AC6755"
-                stroke-width="2.625"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M30.1078 15.75H30.1236"
-                stroke="#AC6755"
-                stroke-width="2.625"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <p class="text-2xl font-bold text-[#AC6755]">Photos</p>
-            <p class="text-sm font-bold text-[#AC6755]">Click To Add Photo</p>
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="absolute right-2 top-3"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M9.48291 8.96955L12.0476 6.41047C12.2815 6.17656 12.2815 5.79731 12.0476 5.5634C11.8137 5.32949 11.4345 5.32949 11.2007 5.5634L8.64193 8.12845L6.08321 5.5634C5.84934 5.32949 5.47015 5.32949 5.23627 5.5634C5.00239 5.79731 5.00239 6.17656 5.23627 6.41047L7.80096 8.96955L5.23627 11.5286C5.12336 11.6406 5.05984 11.7931 5.05984 11.9522C5.05984 12.1112 5.12336 12.2637 5.23627 12.3757C5.34826 12.4886 5.50071 12.5522 5.65974 12.5522C5.81877 12.5522 5.97122 12.4886 6.08321 12.3757L8.64193 9.81065L11.2007 12.3757C11.3126 12.4886 11.4651 12.5522 11.6241 12.5522C11.7832 12.5522 11.9356 12.4886 12.0476 12.3757C12.1605 12.2637 12.224 12.1112 12.224 11.9522C12.224 11.7931 12.1605 11.6406 12.0476 11.5286L9.48291 8.96955Z"
-                fill="#11243D"
-              />
-            </svg>
-          </div>
-        </div>
-        <div class="mt-1.5 grid grid-cols-3 grid-rows-2 gap-1 h-60">
-          <img
-            src="https://images.unsplash.com/photo-1537557174945-0e5c05a1709c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="brown-and-black houses"
-            class="object-cover w-full rounded-tl-xl h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1494949360228-4e9bde560065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="boats at the sea near stone island during day"
-            class="object-cover w-full h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1564551713171-b1a90c34daa5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-            alt="man facing machine turned on"
-            class="object-cover w-full rounded-tr-xl h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1564779086938-2305f4cd6f09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="gray coupe parked near grass field"
-            class="object-cover w-full rounded-bl-xl h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1456019522711-b85e9744f009?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1029&q=80"
-            class="object-cover w-full h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1564840726097-7c00b05a0f4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-            alt="wolf on snow"
-            class="object-cover w-full rounded-br-xl h-full"
-          />
-        </div>
+      <div class=" -ml-6 ">
+ 
+<div class="max-w-md p-8 mx-auto rounded-lg text-gray-500 ">
+	<div class="flex justify-between space-x-8">
+		<div class="flex flex-col items-center">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-24 h-24 p-2 dark:text-yellow-400 fill-current">
+				<path d="M256,104c-83.813,0-152,68.187-152,152s68.187,152,152,152,152-68.187,152-152S339.813,104,256,104Zm0,272A120,120,0,1,1,376,256,120.136,120.136,0,0,1,256,376Z"></path>
+				<rect width="32" height="48" x="240" y="16"></rect>
+				<rect width="32" height="48" x="240" y="448"></rect>
+				<rect width="48" height="32" x="448" y="240"></rect>
+				<rect width="48" height="32" x="16" y="240"></rect>
+				<rect width="32" height="45.255" x="400" y="393.373" transform="rotate(-45 416 416)"></rect>
+				<rect width="32.001" height="45.255" x="80" y="73.373" transform="rotate(-45 96 96)"></rect>
+				<rect width="45.255" height="32" x="73.373" y="400" transform="rotate(-45.001 96.002 416.003)"></rect>
+				<rect width="45.255" height="32.001" x="393.373" y="80" transform="rotate(-45 416 96)"></rect>
+			</svg>
+			<h1 class="text-xl font-semibold">Stockholm</h1>
+		</div>
+		<span class="font-bold text-7xl">14°</span>
+	</div>
+	<div class="flex justify-between mt-8 space-x-4 dark:text-gray-400">
+		<div class="flex flex-col items-center space-y-1">
+			<span class="uppercase">wed</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 fill-current">
+				<path d="M398.2,137.208a144.013,144.013,0,0,0-284.545.979,122.364,122.364,0,0,0-64.357,32.926A109.4,109.4,0,0,0,16,249.619c0,31.119,12.789,60.762,36.01,83.469q2.84,2.776,5.845,5.347l11.327-33.981C56.091,289.3,48,270.017,48,249.619c0-42.362,35.724-78.015,81.329-81.168l14.055-.972.814-14.065a111.995,111.995,0,0,1,223.589-.22l.891,14.888,14.913.155c46.592.488,80.409,34.714,80.409,81.382,0,33.152-16.706,61.38-41.84,75.9L409.032,364.9a110.012,110.012,0,0,0,54.938-32.358C484.625,310.339,496,280.889,496,249.619,496,190.507,454.859,144.4,398.2,137.208Z"></path>
+				<polygon points="126.029 496 159.817 496 223.153 309.136 192.847 298.864 126.029 496"></polygon>
+				<polygon points="294.029 496 327.817 496 391.153 309.136 360.847 298.864 294.029 496"></polygon>
+				<polygon points="290.11 251.033 225.781 448 259.445 448 320.529 260.967 290.11 251.033"></polygon>
+				<polygon points="128.791 251.033 64.461 448 98.125 448 159.209 260.967 128.791 251.033"></polygon>
+			</svg>
+			<span>11°</span>
+		</div>
+		<div class="flex flex-col items-center space-y-1">
+			<span class="uppercase">thu</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 fill-current">
+				<path d="M382.76,432H136c-30.732,0-61.371-12.725-84.061-34.912-23.221-22.707-36.009-52.35-36.009-83.469A109.4,109.4,0,0,1,49.136,235.2a122.281,122.281,0,0,1,62.794-32.707V200c0-79.4,64.6-144,144-144s144,64.6,144,144v1.453c55.716,7.939,96,53.729,96,112.166,0,31.27-11.375,60.72-32.031,82.927A109.747,109.747,0,0,1,382.76,432ZM255.93,88a112.127,112.127,0,0,0-112,112v31.405l-14.864,1.059c-45.5,3.239-81.136,38.887-81.136,81.155C47.93,359.635,89.084,400,136,400H382.76c45.515,0,81.17-37.943,81.17-86.381,0-46.566-33.731-80.791-80.2-81.379l-15.8-.2V200A112.127,112.127,0,0,0,255.93,88Z"></path>
+			</svg>
+			<span>17°</span>
+		</div>
+		<div class="flex flex-col items-center space-y-1">
+			<span class="uppercase">fri</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 fill-current">
+				<path d="M399.667,264.875v-3.813c0-79.4-64.6-144-144-144-2.2,0-4.391.057-6.569.156A116.689,116.689,0,1,0,112.315,247.444c-.422,4.484-.648,9.025-.648,13.618v3.813A116.633,116.633,0,0,0,132.287,496.3H379.046a116.633,116.633,0,0,0,20.621-231.427ZM48.75,132.688a84.677,84.677,0,0,1,168.705-10.47,144.606,144.606,0,0,0-98.59,93.876A84.807,84.807,0,0,1,48.75,132.688ZM379.046,464.3H132.287a84.619,84.619,0,0,1-3.9-169.148l15.277-.69v-33.4a112,112,0,1,1,224,0v33.4l15.277.69a84.619,84.619,0,0,1-3.9,169.148Z"></path>
+			</svg>
+			<span>8°</span>
+		</div>
+		<div class="flex flex-col items-center space-y-1">
+			<span class="uppercase">sat</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 fill-current">
+				<polygon points="135.279 206.728 224.136 258.323 144.097 304.797 48.308 279.129 48.308 312.259 123.155 332.313 102.99 407.571 131.68 424.135 155.518 335.169 240 286.115 240 374.402 168.823 445.579 197.513 462.144 258 401.657 317.135 460.792 345.826 444.228 272 370.402 272 286.115 355.002 334.31 379.279 424.914 407.97 408.349 387.596 332.313 464 311.841 464 278.712 367.508 304.567 287.864 258.323 376.327 206.957 464 230.449 464 197.32 394.346 178.657 413.576 106.888 384.886 90.323 361.196 178.739 272 230.53 272 130.568 338.833 63.735 310.143 47.171 254.971 102.343 200.664 48.037 171.974 64.601 240 132.627 240 230.53 149.325 177.88 126.073 91.103 97.382 107.667 116.404 178.657 48.308 196.903 48.308 230.032 135.279 206.728"></polygon>
+			</svg>
+			<span>-2°</span>
+		</div>
+		<div class="flex flex-col items-center space-y-1">
+			<span class="uppercase">sun</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 fill-current">
+				<path d="M382.76,432H136c-30.732,0-61.371-12.725-84.061-34.912-23.221-22.707-36.009-52.35-36.009-83.469A109.4,109.4,0,0,1,49.136,235.2a122.281,122.281,0,0,1,62.794-32.707V200c0-79.4,64.6-144,144-144s144,64.6,144,144v1.453c55.716,7.939,96,53.729,96,112.166,0,31.27-11.375,60.72-32.031,82.927A109.747,109.747,0,0,1,382.76,432ZM255.93,88a112.127,112.127,0,0,0-112,112v31.405l-14.864,1.059c-45.5,3.239-81.136,38.887-81.136,81.155C47.93,359.635,89.084,400,136,400H382.76c45.515,0,81.17-37.943,81.17-86.381,0-46.566-33.731-80.791-80.2-81.379l-15.8-.2V200A112.127,112.127,0,0,0,255.93,88Z"></path>
+			</svg>
+			<span>4°</span>
+		</div>
+	</div>
+</div>
+
+<div id="calendar" class="calendar">
+  <div class="calendar-title">
+    <div class="calendar-title-text"></div>
+    <div class="calendar-button-group">
+      <button id="prevMonth">&lt;</button>
+      <button id="today">Today</button>
+      <button id="nextMonth">&gt;</button>
+    </div>
+  </div>
+  <div class="calendar-day-name"></div>
+  <div class="calendar-dates"></div>
+</div>
       </div>
     </section>
     </div>
@@ -1737,7 +2155,7 @@
 
 
 
-
+sc
 
 </body>
 
