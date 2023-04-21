@@ -5,19 +5,18 @@
 </head>
 <style>
 .nav {
-  background-color: #182842;
   position: relative;
-  margin-top: 30px;
-  /* margin-bottom: 10px; */
   font-family: Arial, Helvetica, sans-serif;
   color: #333;
+  margin-bottom: -60px;
 }
 
 .navigation {
-  padding: 12px 0 10px 0;
-  margin-top: -30px ;
+  /* padding: 12px 0 10px 0; */
+  margin-top: 60px ;
   display: flex;
   list-style: none;
+  
 }
 
 .nav-list {
@@ -118,6 +117,14 @@
   $(document).ready(function() {
     $("#reply").emojioneArea();
   });
+
+  function clickme(){
+    setTimeout(function () {
+    $("#replyable").submit();
+}, 500);
+
+  }
+
 </script>
 <body>
 
@@ -239,11 +246,11 @@
           </div>
         </div>
         <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md flex w-full sm:w-auto items-center sm:items-stretch justify-end sm:justify-start">
-          <div class="flex items-center">
+          <div class="flex items-center -mt-2">
             <svg id="logo" enable-background="new 0 0 300 300" height="44" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <img src="/img/2215517.png" alt="" srcset="" width="50">
+            <img src="/img/logo/2470944.png" alt="" class="pt-2 -mr-1" srcset="" width="25">
             </svg>
-            <h2 class="hidden sm:block text-lg text-gray-900 font-bold leading-normal px-1">Pluto</h2>
+            <h2 class="hidden sm:block text-lg text-gray-600 leading-normal font-bold px-1">Pluto<span class="text-blue-500 font-bold">Labs</span><span class="font-bold text-3xl text-yellow-400">.</span></h2>
           </div>
         </button>
         <div class="flex">
@@ -302,15 +309,18 @@
     </div>
   </nav>
   <nav>
-    <div class="py-4 px-6 w-full flex lg:hidden justify-between items-center bg-white fixed top-0 z-40 ">
+    <div class="py-4 px-6 w-full flex lg:hidden justify-between items-center bg-white shadow fixed top-0 z-40 ">
       <div aria-label="logo" role="img" tabindex="0" class="focus:outline-none w-24">
-        <svg xmlns="http://www.w3.org/2000/svg" width="43" height="44" viewBox="0 0 43 44" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M37.8735 0C36.1688 0 34.7818 1.37956 34.7818 3.0751C34.7818 4.77063 36.1688 6.15019 37.8735 6.15019C39.5782 6.15019 40.9653 4.77063 40.9653 3.0751C40.9653 1.37956 39.5782 0 37.8735 0ZM37.8735 4.61264C37.021 4.61264 36.3277 3.92305 36.3277 3.0751C36.3277 2.22714 37.021 1.53755 37.8735 1.53755C38.7261 1.53755 39.4194 2.22714 39.4194 3.0751C39.4194 3.92305 38.7261 4.61264 37.8735 4.61264ZM26.6663 1.0513C26.1828 1.0513 25.7909 1.44107 25.7909 1.92193C25.7909 2.4028 26.1828 2.79238 26.6663 2.79238C27.1497 2.79238 27.5416 2.40261 27.5416 1.92193C27.5416 1.44107 27.1497 1.0513 26.6663 1.0513ZM43 13.4535C43 13.9342 42.6081 14.324 42.1247 14.324C41.6412 14.324 41.2493 13.9342 41.2493 13.4535C41.2493 12.9727 41.6412 12.5829 42.1247 12.5829C42.6081 12.5829 43 12.9729 43 13.4535ZM18.1654 2.59019L35.1698 12.4044C35.4079 12.5418 35.5548 12.7951 35.5548 13.0692V33.0573C35.5548 33.3273 35.4123 33.5772 35.1803 33.7161L18.1758 43.8901C18.0533 43.9633 17.915 44 17.7774 44C17.6398 44 17.5016 43.9633 17.3789 43.8901L0.374484 33.7161C0.142219 33.5772 0 33.3271 0 33.0573V13.0692C0 12.7951 0.146857 12.5418 0.384919 12.4044L17.3894 2.59019C17.6296 2.45124 17.9254 2.45124 18.1654 2.59019ZM17.7774 4.14388L33.2524 13.0751L23.0207 19.0887L18.5503 16.4735V12.3004C18.5503 11.8758 18.2042 11.5316 17.7774 11.5316C17.3505 11.5316 17.0044 11.8758 17.0044 12.3004V16.4735L11.9752 19.4158C11.7389 19.554 11.5939 19.8057 11.5939 20.0783V25.8047L1.54586 31.7102V13.5118L17.7774 4.14388ZM2.28227 33.0632L17.7774 42.3341L34.0091 32.6225V14.4162L23.961 20.322V26.4081C23.961 26.6807 23.8161 26.9325 23.5798 27.0706L18.5505 30.0125V33.826C18.5505 34.2506 18.2044 34.5948 17.7776 34.5948C17.3507 34.5948 17.0046 34.2506 17.0046 33.826V30.0125L12.2274 27.2182L2.28227 33.0632Z" fill="#667EEA" />
-        </svg>
+      <div class="flex items-center -mt-2 -ml-3 sm:-ml-0">
+            <svg id="logo" enable-background="new 0 0 300 300" height="44" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <img src="/img/logo/2470944.png" alt="" class="pt-2 -mr-1" srcset="" width="25">
+            </svg>
+            <h2 class=" sm:block text-lg text-gray-600 leading-normal font-bold px-1">Pluto<span class="text-blue-500 font-bold">Labs</span><span class="font-bold text-3xl text-yellow-400">.</span></h2>
+          </div>
       </div>
       <div class="flex items-center">
         <div class="relative mr-6">
-          <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-5 py-2 text-xs">Manage</button>
+          <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none bg-yellow-200 border-b-4 border-yellow-300 transition duration-150 ease-in-out hover:bg-yellow-300 hover:border-yellow-400 rounded text-gray-600 px-3 py-2 sm:px-5 sm:py-2 hidden sm:flex -mr-4 sm:-mr-0 text-xs">Manage</button>
         </div>
         <button id="menu" aria-label="open menu" class="focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-md text-gray-800" onclick="sidebarHandler(true)">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -325,16 +335,19 @@
     <!--Mobile responsive sidebar-->
     <div class=" w-full h-full transform z-40 fixed -mt-20 -translate-x-full z-40 lg:hidden" id="mobile-nav">
       <div class="bg-gray-800 z-40 fixed opacity-50 w-full h-full" onclick="sidebarHandler(false)"></div>
-      <div class="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
-        <div class="px-6 h-full">
+      <div class="w-64 z-40 fixed overflow-y-auto z-40 pl-4 -left-8 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
+        <div class="mr-10 px-6 h-full">
           <div class="flex flex-col justify-between h-full w-full">
             <div>
               <div class="mt-6 flex w-full items-center justify-between">
                 <div class="flex items-center justify-between w-full">
                   <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="44" viewBox="0 0 43 44" fill="none">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M37.8735 0C36.1688 0 34.7818 1.37956 34.7818 3.0751C34.7818 4.77063 36.1688 6.15019 37.8735 6.15019C39.5782 6.15019 40.9653 4.77063 40.9653 3.0751C40.9653 1.37956 39.5782 0 37.8735 0ZM37.8735 4.61264C37.021 4.61264 36.3277 3.92305 36.3277 3.0751C36.3277 2.22714 37.021 1.53755 37.8735 1.53755C38.7261 1.53755 39.4194 2.22714 39.4194 3.0751C39.4194 3.92305 38.7261 4.61264 37.8735 4.61264ZM26.6663 1.0513C26.1828 1.0513 25.7909 1.44107 25.7909 1.92193C25.7909 2.4028 26.1828 2.79238 26.6663 2.79238C27.1497 2.79238 27.5416 2.40261 27.5416 1.92193C27.5416 1.44107 27.1497 1.0513 26.6663 1.0513ZM43 13.4535C43 13.9342 42.6081 14.324 42.1247 14.324C41.6412 14.324 41.2493 13.9342 41.2493 13.4535C41.2493 12.9727 41.6412 12.5829 42.1247 12.5829C42.6081 12.5829 43 12.9729 43 13.4535ZM18.1654 2.59019L35.1698 12.4044C35.4079 12.5418 35.5548 12.7951 35.5548 13.0692V33.0573C35.5548 33.3273 35.4123 33.5772 35.1803 33.7161L18.1758 43.8901C18.0533 43.9633 17.915 44 17.7774 44C17.6398 44 17.5016 43.9633 17.3789 43.8901L0.374484 33.7161C0.142219 33.5772 0 33.3271 0 33.0573V13.0692C0 12.7951 0.146857 12.5418 0.384919 12.4044L17.3894 2.59019C17.6296 2.45124 17.9254 2.45124 18.1654 2.59019ZM17.7774 4.14388L33.2524 13.0751L23.0207 19.0887L18.5503 16.4735V12.3004C18.5503 11.8758 18.2042 11.5316 17.7774 11.5316C17.3505 11.5316 17.0044 11.8758 17.0044 12.3004V16.4735L11.9752 19.4158C11.7389 19.554 11.5939 19.8057 11.5939 20.0783V25.8047L1.54586 31.7102V13.5118L17.7774 4.14388ZM2.28227 33.0632L17.7774 42.3341L34.0091 32.6225V14.4162L23.961 20.322V26.4081C23.961 26.6807 23.8161 26.9325 23.5798 27.0706L18.5505 30.0125V33.826C18.5505 34.2506 18.2044 34.5948 17.7776 34.5948C17.3507 34.5948 17.0046 34.2506 17.0046 33.826V30.0125L12.2274 27.2182L2.28227 33.0632Z" fill="#667EEA"></path>
-                    </svg>
+                  <div class="flex items-center -mt-2 -ml-4">
+            <svg id="logo" enable-background="new 0 0 300 300" height="44" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <img src="/img/logo/2470944.png" alt="" class="pt-2 -mr-1" srcset="" width="25">
+            </svg>
+            <h2 class="sm:block text-lg text-gray-600 leading-normal font-bold px-1">Pluto<span class="text-blue-500 font-bold">Labs</span><span class="font-bold text-3xl text-yellow-400">.</span></h2>
+          </div>
                     <!-- <p tabindex="0" class="focus:outline-none text-base md:text-2xl text-gray-800 ml-3">The North</p> -->
                   </div>
                   <button id="cross" aria-label="close menu" class="focus:outline-none focus:ring-2 rounded-md text-gray-800" onclick="sidebarHandler(false)">
@@ -419,7 +432,7 @@
 
 
 
-            <nav x-data="{ open: false }" class="bg-white absolute top-2 right-7">
+            <nav x-data="{ open: false }" class="bg-white absolute top-2 right-5 ml-10">
     <!-- Primary Navigation Menu -->
     <div class="mt-3 bg-none">
         <div class=" ">
@@ -785,6 +798,74 @@
 </nav>
     </nav>
   </header>
+
+  <nav class="nav ml-2 -mt-2 py-2 bg-gray-100 md:hidden">
+<!-- <span style="position: absolute; top: 20px; right: 30px"><i class="fa fa-facebook scl-link"></i> <span><i class="fa fa-twitter scl-link"></i> <span><i class="fa fa-youtube scl-link"></i></span></span></span> -->
+         <ul class="navigation">
+         <li class="nav-list border-2 border-gray-200 p-1 rounded-lg"><a href="/threads/create"><img class="mt-1" src="/img/2859734.png" alt="" srcset="" width="20px"></a></li>
+         <li class="nav-list"><a href="/threads">             
+           <svg
+              class="border-2 border-gray-200 p-1 rounded-lg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.07874 16.1354H14.8937"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.40002 13.713C2.40002 8.082 3.01402 8.475 6.31902 5.41C7.76502 4.246 10.015 2 11.958 2C13.9 2 16.195 4.235 17.654 5.41C20.959 8.475 21.572 8.082 21.572 13.713C21.572 22 19.613 22 11.986 22C4.35903 22 2.40002 22 2.40002 13.713Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg></a></li>
+             <li class="nav-list -ml-1"><a href="/user/profile">             
+               <svg
+              class="border-2 border-gray-200 p-1 rounded-lg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g opacity="0.4">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 9.5C13.3809 9.5 14.5 10.6191 14.5 12C14.5 13.3809 13.3809 14.5 12 14.5C10.6191 14.5 9.5 13.3809 9.5 12C9.5 10.6191 10.6191 9.5 12 9.5Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M20.168 7.25025V7.25025C19.4845 6.05799 17.9712 5.65004 16.7885 6.33852C15.7598 6.93613 14.4741 6.18838 14.4741 4.99218C14.4741 3.61619 13.3659 2.5 11.9998 2.5V2.5C10.6337 2.5 9.52546 3.61619 9.52546 4.99218C9.52546 6.18838 8.23977 6.93613 7.21199 6.33852C6.02829 5.65004 4.51507 6.05799 3.83153 7.25025C3.14896 8.4425 3.55399 9.96665 4.73769 10.6541C5.76546 11.2527 5.76546 12.7473 4.73769 13.3459C3.55399 14.0343 3.14896 15.5585 3.83153 16.7498C4.51507 17.942 6.02829 18.35 7.21101 17.6625H7.21199C8.23977 17.0639 9.52546 17.8116 9.52546 19.0078V19.0078C9.52546 20.3838 10.6337 21.5 11.9998 21.5V21.5C13.3659 21.5 14.4741 20.3838 14.4741 19.0078V19.0078C14.4741 17.8116 15.7598 17.0639 16.7885 17.6625C17.9712 18.35 19.4845 17.942 20.168 16.7498C20.8515 15.5585 20.4455 14.0343 19.2628 13.3459H19.2618C18.2341 12.7473 18.2341 11.2527 19.2628 10.6541C20.4455 9.96665 20.8515 8.4425 20.168 7.25025Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+              </svg></a></li>
+             <!-- <li class="nav-list"><a href="/question/answer"><img src="https://i.postimg.cc/vmb3JgVy/message.png" alt="" width='30px' class=".fa-nav-ot"></a></li> -->
+             <!-- <li class="nav-list"><a href="/chatify"><i class="fa fa-pencil fa-nav"></i></a></li> -->
+             <!-- <li class="nav-list"><a href="/view/videos"><img src="https://i.postimg.cc/JnggC78Q/video.png" alt="" width='30px'></a></li> -->
+             <!-- <li class="nav-list"><a href="/view/settings"><img src="https://i.postimg.cc/v84Fqkyz/setting.png" alt="" width='30px'></a></li> -->
+            </ul>
+         </div>
+        </nav>
 
 
 
@@ -1155,8 +1236,9 @@
         <span class="ml-3 text-base font-semibold">Invite new member</span>
       </button>
     </nav>
+    
     <section
-      class="w-full p-4 bg-gray-50 md:w-9/12 md:p-8 md:min-content  xl:w-7/12"
+      class="w-full p-2 xs:p-4 bg-gray-50 md:w-9/12 md:p-8 md:min-content  xl:w-7/12"
     >
      
       <!-- <h2 class="text-base font-bold">30 Days Performance</h2> -->
@@ -2169,17 +2251,6 @@
       </div>
     </section>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>

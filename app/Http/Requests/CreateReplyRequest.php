@@ -18,6 +18,8 @@ class CreateReplyRequest extends FormRequest
     {
         return [
             'body'              => ['required'],
+            'image'              => [''],
+            'image_url'              => [''],
             'replyable_id'      => ['required'],
             'replyable_type'    => ['required', 'in:' . Thread::TABLE],
         ];
@@ -45,5 +47,15 @@ class CreateReplyRequest extends FormRequest
     public function body(): string
     {
         return $this->get('body');
+    }
+
+    public function image()
+    {
+        return $this->get('image');
+    }
+
+    public function image_url()
+    {
+        return $this->get('image_url');
     }
 }

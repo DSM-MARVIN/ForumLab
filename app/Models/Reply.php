@@ -32,6 +32,9 @@ final class Reply extends Model
      */
     protected $fillable = [
         'body',
+        'image',
+        'image_url'
+
     ];
 
     protected $with = [
@@ -46,6 +49,16 @@ final class Reply extends Model
     public function body(): string
     {
         return $this->body;
+    }
+
+    public function image(): string
+    {
+        return $this->image;
+    }
+
+    public function image_url(): string
+    {
+        return $this->image_url();
     }
 
     public function excerpt(int $limit = 200): string

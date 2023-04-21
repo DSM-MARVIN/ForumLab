@@ -21,7 +21,7 @@
 
                                 {{-- Image --}}
 <x-form.label for="image" value="{{ __('Image') }}" />
-    <input value="null" name="image" class="mb-5" type="file" wire:model="image">
+    <input value="null" name="image" class="mb-5" type="file" wire:model="image" >
 
     {{-- Body --}}
     <div>

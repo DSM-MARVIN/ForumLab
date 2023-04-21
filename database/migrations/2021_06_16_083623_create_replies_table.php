@@ -16,6 +16,8 @@ class CreateRepliesTable extends Migration
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->text('body');
+            $table->string('image')->nullable();
+            $table->string('image_url')->nullable();
             $table->integer('replyable_id');
             $table->string('replyable_type')->default('');
             $table->foreignId('author_id')->constrained('users');

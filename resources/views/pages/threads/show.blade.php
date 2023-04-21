@@ -84,7 +84,7 @@
             @auth
             <div class="p-5 space-y-4 bg-white shadow">
                 <h2 class="text-gray-500">Post a reply</h2>
-                <x-form action="{{ route('replies.store') }}">
+                <x-form action="{{ route('replies.store') }} " id="replyable">
                     <div>
                         <input type="text" id="reply" name="body" class="w-full bg-gray-200 border-none shadow-inner focus:ring-blue-400" />
                         <x-form.error for="body" />
@@ -95,13 +95,8 @@
                         <x-form.error for="replyable_type" />
 
                     </div>
-
-                    <div class="grid mt-4">
-                        {{-- Button --}}
-                        <x-buttons.primary class="justify-self-end">
-                            {{ __('Post') }}
-                        </x-buttons.primary>
-                    </div>
+                    @livewire('reply-thread')
+                    
                 </x-form>
             </div>
             @else
